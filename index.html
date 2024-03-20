@@ -2,11 +2,85 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+
+    <title>Movie App</title>
+
+    <link
+      rel="shortcut icon"
+      href="./assets/Images/favicon.svg"
+      type="image/svg+xml"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
     <link rel="stylesheet" href="./assets/StyleSheet/main.css" />
+
+    <script src="./assets/JavaScript/global.js" defer></script>
+    <script src="./assets/JavaScript/index.js" type="module"></script>
   </head>
+
   <body>
-    <script src="./assets/JavaScript/app.js"></script>
+    <header class="header">
+      <a href="./index.html" class="logo"
+        ><img
+          src="./assets/Images/logo.png"
+          alt="logo"
+          width="140"
+          height="32"
+        />
+      </a>
+
+      <div class="search-box" search-box>
+        <div class="search-wrapper" search-wrapper>
+          <input
+            type="text"
+            name="search"
+            aria-label="search movies"
+            autocomplete="off"
+            placeholder="Search any movies..."
+            class="search-field"
+            search-field
+          />
+          <img
+            src="./assets/Images/search.png"
+            alt="search_icon"
+            class="leading-icon"
+            width="24"
+            height="24"
+          />
+        </div>
+        <button class="search-btn" search-toggler>
+          <img src="./assets/Images/close.png" alt="" width="24" height="24" />
+        </button>
+      </div>
+
+      <div class="search-btn" search-toggler menu-close>
+        <img src="./assets/Images/search.png" alt="" width="24" height="24" />
+      </div>
+
+      <button class="menu-btn" menu-btn menu-toggler>
+        <img
+          src="./assets/Images/menu.png"
+          alt=""
+          width="24"
+          height="24"
+          class="menu"
+        />
+        <img
+          src="./assets/Images/menu-close.png"
+          alt=""
+          width="24"
+          height="24"
+          class="close"
+        />
+      </button>
+    </header>
   </body>
 </html>
