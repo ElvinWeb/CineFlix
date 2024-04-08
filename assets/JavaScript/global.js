@@ -1,6 +1,4 @@
-const addEventOnElements = function (elements, eventType, callback) {
-  for (const elem of elements) elem.addEventListener(eventType, callback);
-};
+import { addEventOnElements } from "./helpers.js";
 
 const searchBox = document.querySelector("[search-box]");
 const searchTogglers = document.querySelectorAll("[search-toggler]");
