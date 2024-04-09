@@ -6,16 +6,14 @@ export const sidebar = function () {
   const genreList = {};
 
   fetchDataFromServer(
-    `${API_URL}genre/movie/list?api_key=${API_KEY}`,
+    `${API_URL}/genre/movie/list?api_key=${API_KEY}`,
     function ({ genres }) {
       for (const { id, name } of genres) {
         genreList[id] = name;
       }
-
       genreLink();
     }
   );
-
   const sidebarInner = document.createElement("div");
   sidebarInner.classList.add("sidebar-inner");
   sidebarInner.innerHTML = `
@@ -44,7 +42,6 @@ export const sidebar = function () {
       <img src="./assets/images/tmdb-logo.svg" width="130" height="17" alt="the movie database logo">
     </div>
   `;
-
   const genreLink = function () {
     for (const [genreId, genreName] of Object.entries(genreList)) {
       const link = document.createElement("a");
@@ -63,7 +60,6 @@ export const sidebar = function () {
     sidebar.appendChild(sidebarInner);
     toggleSidebar(sidebar);
   };
-
   const toggleSidebar = function (sidebar) {
     const sidebarBtn = document.querySelector("[menu-btn]");
     const sidebarTogglers = document.querySelectorAll("[menu-toggler]");
