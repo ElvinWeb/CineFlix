@@ -553,7 +553,7 @@ body {
 }
 
 .banner-slider .active {
-  left: 0;
+  /* left: 0; */
   opacity: 1;
   visibility: visible;
 }
@@ -625,6 +625,12 @@ body {
   border-radius: var(--radius-8);
   flex-shrink: 0;
   filter: brightness(0.4);
+}
+.slider-control .slider-item img {
+  transition: all 0.2s ease;
+}
+.slider-control .slider-item img:hover {
+  transform: scale(1.1);
 }
 
 .slider-control .active {

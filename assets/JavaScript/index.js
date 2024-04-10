@@ -2,7 +2,7 @@ import { sidebar } from "./sidebar.js";
 import { addEventOnElements, fetchDataFromServer } from "./helpers.js";
 import { IMAGE_BASE_URL, API_KEY, API_URL } from "./config.js";
 import { createMovieCard } from "./movie-card.js";
-
+sidebar();
 const pageContent = document.querySelector("[page-content]");
 const homePageSections = [
   {
@@ -23,13 +23,12 @@ const genreList = {
     let newGenreList = [];
 
     for (const genreId of genreIdList) {
-      this[genreId] && newGenreList.push(this[genreId]); // this == genreList;
+      this[genreId] && newGenreList.push(this[genreId]);
     }
 
     return newGenreList.join(", ");
   },
 };
-sidebar();
 
 fetchDataFromServer(
   `${API_URL}/genre/movie/list?api_key=${API_KEY}`,
@@ -44,19 +43,18 @@ fetchDataFromServer(
   }
 );
 const heroBanner = function ({ results: movieList }) {
-  console.log(movieList);
   const banner = document.createElement("section");
   banner.classList.add("banner");
-  banner.ariaLabel = "popular movies";
-  let controlItemIndex = 0;
+  banner.ariaLabel = "Popular movies";
   banner.innerHTML = `
     <div class="banner-slider"></div>
-
+    
     <div class="slider-control">
       <div class="control-inner"></div>
     </div>
   `;
 
+  let controlItemIndex = 0;
   for (const [index, movie] of movieList.entries()) {
     const {
       backdrop_path,
@@ -102,7 +100,7 @@ const heroBanner = function ({ results: movieList }) {
       </div>
     `;
 
-    banner.querySelector(".control-inner").appendChild(sliderItem);
+    banner.querySelector(".banner-slider").appendChild(sliderItem);
 
     const controlItem = document.createElement("button");
     controlItem.classList.add("poster-box", "slider-item");
@@ -154,7 +152,6 @@ const createMovieList = function ({ results: movieList }, title) {
   const movieListElem = document.createElement("section");
   movieListElem.classList.add("movie-list");
   movieListElem.ariaLabel = `${title}`;
-
   movieListElem.innerHTML = `
       <div class="title-wrapper">
         <h3 class="title-large">${title}</h3>
