@@ -1,0 +1,17 @@
+.overlay {
+    position: fixed;
+    top: 96px;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background: $background;
+    opacity: 0;
+    pointer-events: none;
+    transition: $transition-short;
+    z-index: 3;
+
+    &.active {
+        opacity: 0.5;
+        pointer-events: all;
+    }
+}

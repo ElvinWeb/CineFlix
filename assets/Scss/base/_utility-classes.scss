@@ -1,0 +1,73 @@
+@keyframes loading {
+    0% {
+        transform: rotate(0);
+    }
+
+    100% {
+        transform: rotate(1turn);
+    }
+}
+
+
+.title {
+    font-size: $fs-title;
+    @extend %title;
+}
+
+.heading {
+    color: $white;
+    font-size: $fs-heading;
+    line-height: 1.2;
+    @extend %title;
+}
+
+.title-large {
+    font-size: $fs-title-lg;
+    @extend %title;
+}
+
+.img-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.meta-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 12px;
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.card-badge {
+    background-color: $banner-background;
+    color: $white;
+    font-size: $fs-label;
+    font-weight: $weight-bold;
+    padding-inline: 6px;
+    border-radius: $radius-4;
+}
+
+.separator {
+    width: 4px;
+    height: 4px;
+    background-color: $white-alpha-20;
+    border-radius: $radius-8;
+}
+
+.container {
+    position: relative;
+    background-color: $surface;
+    color: $on-surface;
+    padding: 24px 20px 48px;
+    height: calc(100vh - 96px);
+    overflow-y: overlay;
+    z-index: 1;
+}

@@ -1,0 +1,55 @@
+.search-btn,
+.menu-btn {
+    padding: 12px;
+}
+
+.search-btn {
+    background-color: $banner-background;
+    border-radius: $radius-8;
+
+    img {
+        opacity: 0.5;
+        transition: $transition-short;
+    }
+
+    &:is(:hover, :focus-visible) img {
+        opacity: 1;
+    }
+}
+
+.btn {
+    color: $white;
+    font-size: $fs-button;
+    font-weight: $weight-bold;
+    max-width: max-content;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-block: 12px;
+    padding-inline: 20px 24px;
+    border-radius: $radius-8;
+    transition: $transition-short;
+}
+
+.card-btn {
+    position: absolute;
+    inset: 0;
+}
+
+.load-more {
+    background-color: $primary-variant;
+    margin-inline: auto;
+    margin-block: 36px 60px;
+
+    &:is(:hover, :focus-visible) {
+        $primary-variant: hsla(350, 67%, 39%, 1);
+    }
+
+    &.loading::before {
+        display: block;
+    }
+
+    &::before {
+        @extend %before
+    }
+}

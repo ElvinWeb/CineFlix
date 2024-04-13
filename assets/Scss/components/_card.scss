@@ -1,0 +1,38 @@
+
+.movie-card {
+    position: relative;
+    width: 200px;
+
+    .card-banner {
+        width: 200px;
+    }
+
+    .title {
+        width: 100%;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        margin-block: 8px 4px;
+    }
+
+    .meta-list {
+        justify-content: space-between;
+    }
+
+
+}
+
+.poster-box {
+    background-image: url("../images/poster-bg-icon.png");
+    aspect-ratio: 2 / 3;
+    @extend %background-image-design;
+}
+
+.video-card {
+    background-image: url("../Images/video-bg-icon.png");
+    aspect-ratio: 16 / 9;
+    flex-shrink: 0;
+    max-width: 500px;
+    width: calc(100% - 40px);
+    @extend %background-image-design;
+}

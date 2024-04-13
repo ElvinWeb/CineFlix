@@ -1,0 +1,70 @@
+.sidebar {
+    position: absolute;
+    background-color: $background;
+    top: 96px;
+    bottom: 0;
+    left: -340px;
+    max-width: 340px;
+    width: 100%;
+    border-block-start: 1px solid $banner-background;
+    overflow-y: overlay;
+    z-index: 4;
+    visibility: hidden;
+    transition: $transition-long;
+
+    &.active {
+        transform: translateX(340px);
+        visibility: visible;
+    }
+
+    &-inner {
+        display: grid;
+        gap: 20px;
+        padding-block: 36px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: transparent;
+    }
+
+    &:is(:hover, :focus-within)::-webkit-scrollbar-thumb {
+        background-color: $banner-background;
+    }
+
+    &::-webkit-scrollbar-button {
+        height: 16px;
+    }
+
+    &-list,
+    &-footer {
+        padding-inline: 36px;
+    }
+
+    &-link {
+        color: $on-surface-variant;
+        transition: $transition-short;
+
+        &:is(:hover, :focus-visible) {
+            color: $on-background;
+        }
+    }
+
+
+    &-list {
+        display: grid;
+        gap: 8px;
+
+        .title {
+            margin-block-end: 8px;
+        }
+    }
+
+    &-footer {
+        border-block-start: 1px solid $banner-background;
+        padding-block-start: 28px;
+        margin-block-start: 16px;
+    }
+}
+
+
+
