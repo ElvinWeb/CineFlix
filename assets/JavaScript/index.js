@@ -1,9 +1,14 @@
-import { sidebar } from "./sidebar.js";
-import { addEventOnElements, fetchDataFromServer } from "./helpers.js";
+// import sidebar from "./sidebar.js";
+import {
+  addEventOnElements,
+  fetchDataFromServer,
+  appendToMovieList,
+} from "./helpers.js";
 import { IMAGE_BASE_URL, API_KEY, API_URL } from "./config.js";
-import { createMovieCard } from "./movie-card.js";
-sidebar();
+
 const pageContent = document.querySelector("[page-content]");
+let controlItemIndex = 0;
+
 const homePageSections = [
   {
     title: "Upcoming Movies",
@@ -54,7 +59,7 @@ const heroBanner = function ({ results: movieList }) {
     </div>
   `;
 
-  let controlItemIndex = 0;
+  
   for (const [index, movie] of movieList.entries()) {
     const {
       backdrop_path,
@@ -68,7 +73,7 @@ const heroBanner = function ({ results: movieList }) {
     } = movie;
 
     const sliderItem = document.createElement("div");
-    sliderItem.classList.add("slider");
+    sliderItem.classList.add("slider-item");
     sliderItem.setAttribute("slider-item", "");
     sliderItem.innerHTML = `
       <img src="${IMAGE_BASE_URL}w1280${backdrop_path}" alt="${title}" class="img-cover" loading=${
@@ -112,6 +117,7 @@ const heroBanner = function ({ results: movieList }) {
 
     banner.querySelector(".control-inner").appendChild(controlItem);
   }
+  
   pageContent.appendChild(banner);
   addHeroSlide();
 
@@ -144,9 +150,9 @@ const addHeroSlide = function () {
 
     lastSliderItem = sliderItems[Number(this.getAttribute("slider-control"))];
     lastSliderControl = this;
-
-    addEventOnElements(sliderControls, "click", sliderStart);
   };
+
+  addEventOnElements(sliderControls, "click", sliderStart);
 };
 const createMovieList = function ({ results: movieList }, title) {
   const movieListElem = document.createElement("section");
@@ -162,10 +168,6 @@ const createMovieList = function ({ results: movieList }, title) {
       </div>
     `;
 
-  for (const movie of movieList) {
-    const movieCard = createMovieCard(movie);
-    movieListElem.querySelector(".slider-inner").appendChild(movieCard);
-  }
-
+  appendToMovieList(movieListElem, movieList, "slider-inner");
   pageContent.appendChild(movieListElem);
 };

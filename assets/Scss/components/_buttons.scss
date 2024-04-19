@@ -34,6 +34,11 @@
 .card-btn {
     position: absolute;
     inset: 0;
+
+    &:hover {
+        transition: all 0.3s ease;
+        box-shadow: $shadow-1;
+    }
 }
 
 .load-more {

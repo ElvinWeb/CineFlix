@@ -166,7 +166,6 @@ body {
 }
 
 .movie-card {
-  position: relative;
   width: 200px;
 }
 .movie-card .card-banner {
@@ -232,6 +231,10 @@ body {
   position: absolute;
   inset: 0;
 }
+.card-btn:hover {
+  transition: all 0.3s ease;
+  box-shadow: 0 1px 4px hsla(0, 0%, 0%, 0.75);
+}
 
 .load-more {
   background-color: hsl(349, 69%, 51%);
@@ -241,23 +244,6 @@ body {
 .load-more.loading::before {
   display: block;
 }
-.overlay {
-  position: fixed;
-  top: 96px;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background: hsl(220, 17%, 7%);
-  opacity: 0;
-  pointer-events: none;
-  transition: 250ms ease;
-  z-index: 3;
-}
-.overlay.active {
-  opacity: 0.5;
-  pointer-events: all;
-}
-
 .banner {
   position: relative;
   height: 700px;
@@ -335,6 +321,18 @@ body {
   filter: brightness(1);
   box-shadow: 0 1px 4px hsla(0, 0%, 0%, 0.75);
 }
+.banner .slider-control .slider-item {
+  width: 100px;
+  border-radius: 8px;
+  flex-shrink: 0;
+  filter: brightness(0.4);
+}
+.banner .slider-control .slider-item img {
+  transition: all 0.2s ease;
+}
+.banner .slider-control .slider-item img:hover {
+  transform: scale(1.1);
+}
 .banner .control-inner {
   display: flex;
   gap: 12px;
@@ -342,18 +340,6 @@ body {
 .banner .control-inner::after {
   content: "";
   min-width: 12px;
-}
-.banner .slider-item {
-  width: 100px;
-  border-radius: 8px;
-  flex-shrink: 0;
-  filter: brightness(0.4);
-}
-.banner .slider-item .slider-item img {
-  transition: all 0.2s ease;
-}
-.banner .slider-item .slider-item img:hover {
-  transform: scale(1.1);
 }
 
 .header {
@@ -546,6 +532,22 @@ body {
   min-width: 4px;
 }
 
+.genre-list .title-wrapper {
+  margin-block-end: 56px;
+}
+
+.grid-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  -moz-column-gap: 16px;
+       column-gap: 16px;
+  row-gap: 20px;
+}
+
+:is(.genre-list, .search-modal) :is(.movie-card, .card-banner) {
+  width: 100%;
+}
+
 .sidebar {
   position: absolute;
   background-color: hsl(220, 17%, 7%);
@@ -599,4 +601,21 @@ body {
   border-block-start: 1px solid hsl(250, 6%, 20%);
   padding-block-start: 28px;
   margin-block-start: 16px;
+}
+
+.overlay {
+  position: fixed;
+  top: 96px;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background: hsl(220, 17%, 7%);
+  opacity: 0;
+  pointer-events: none;
+  transition: 250ms ease;
+  z-index: 3;
+}
+.overlay.active {
+  opacity: 0.5;
+  pointer-events: all;
 }

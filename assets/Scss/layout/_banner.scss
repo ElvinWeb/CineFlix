@@ -88,6 +88,22 @@
             box-shadow: $shadow-1;
         }
 
+        .slider-item {
+            width: 100px;
+            border-radius: $radius-8;
+            flex-shrink: 0;
+            filter: brightness(0.4);
+    
+             img {
+                transition: all 0.2s ease;
+    
+                &:hover {
+                    transform: scale(1.1);
+                }
+            }
+    
+        }
+
 
     }
 
@@ -101,20 +117,5 @@
         }
     }
 
-    .slider-item {
-        width: 100px;
-        border-radius: $radius-8;
-        flex-shrink: 0;
-        filter: brightness(0.4);
-
-        .slider-item img {
-            transition: all 0.2s ease;
-
-            &:hover {
-                transform: scale(1.1);
-            }
-        }
-
-    }
-
+    
 }
