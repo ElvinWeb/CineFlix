@@ -1,11 +1,15 @@
-import movieCard from "./movieCard.js";
+import { createMovieCard } from "./movieCard.js";
 
 export const addEventOnElements = function (elements, eventType, callback) {
   for (const elem of elements) elem.addEventListener(eventType, callback);
 };
-export const appendToMovieList = function (movieListElem, movieList, className) {
+export const appendToMovieList = function (
+  movieListElem,
+  movieList,
+  className
+) {
   for (const movie of movieList) {
-    const movieListCard = movieCard.createMovieCard(movie);
+    const movieListCard = createMovieCard(movie);
     movieListElem.querySelector(`.${className}`).appendChild(movieListCard);
   }
 };

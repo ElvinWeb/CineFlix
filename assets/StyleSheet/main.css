@@ -228,12 +228,7 @@ body {
 }
 
 .card-btn {
-  position: absolute;
   inset: 0;
-}
-.card-btn:hover {
-  transition: all 0.3s ease;
-  box-shadow: 0 1px 4px hsla(0, 0%, 0%, 0.75);
 }
 
 .load-more {

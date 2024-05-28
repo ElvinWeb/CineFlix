@@ -44,7 +44,7 @@ fetchDataFromServer(
         this.classList.add("loading");
 
         fetchDataFromServer(
-          `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&sort_by=popularity.desc&include_adult=false&page=${currentPage}&${urlParam}`,
+          `${API_URL}/discover/movie?api_key=${API_KEY}&sort_by=popularity.desc&include_adult=false&page=${currentPage}&${urlParam}`,
           ({ results: movieList }) => {
             this.classList.remove("loading");
             appendToMovieList(movieListElem, movieList, "grid-list");

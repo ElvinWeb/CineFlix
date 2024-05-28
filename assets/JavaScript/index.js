@@ -7,7 +7,7 @@ import {
 import { IMAGE_BASE_URL, API_KEY, API_URL } from "./config.js";
 
 const pageContent = document.querySelector("[page-content]");
-let controlItemIndex = 0;
+
 
 const homePageSections = [
   {
@@ -59,7 +59,7 @@ const heroBanner = function ({ results: movieList }) {
     </div>
   `;
 
-  
+  let controlItemIndex = 0;
   for (const [index, movie] of movieList.entries()) {
     const {
       backdrop_path,
