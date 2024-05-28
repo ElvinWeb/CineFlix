@@ -1,4 +1,5 @@
 import { IMAGE_BASE_URL } from "./config.js";
+import { getMovieDetail } from "./global.js";
 
 export function createMovieCard(movie) {
   const { poster_path, title, vote_average, release_date, id } = movie;
@@ -6,7 +7,9 @@ export function createMovieCard(movie) {
   card.classList.add("movie-card");
 
   card.innerHTML = `
-  <a href="./detail.html" class="card-btn" title="${title}" onclick="getMovieDetail(${id})">
+  <a href="./detail.html" class="card-btn" title="${title}" onclick=${getMovieDetail(
+    id
+  )}>
     <figure class="poster-box card-banner">
       <img src="${IMAGE_BASE_URL}w342${poster_path}" alt="${title}" class="img-cover" loading="lazy">
     </figure>

@@ -1,6 +1,7 @@
 "use strict";
 import { API_KEY, API_URL } from "./config.js";
 import { addEventOnElements, fetchDataFromServer } from "./helpers.js";
+import { getMovieList } from "./global.js";
 
 export function sidebar() {
   const genreList = {};
@@ -43,14 +44,13 @@ export function sidebar() {
   `;
   const genreLink = function () {
     for (const [genreId, genreName] of Object.entries(genreList)) {
-      
       const link = document.createElement("a");
       link.classList.add("sidebar-link");
-      link.setAttribute("href", "./movie-list.html");
+      link.setAttribute("href", "./movieList.html");
       link.setAttribute("menu-close", "");
       link.setAttribute(
         "onclick",
-        `getMovieList("with_genres=${genreId}", "${genreName}")`
+        getMovieList(`with_genres=${genreId}`, `${genreName}`)
       );
       link.textContent = genreName;
 
