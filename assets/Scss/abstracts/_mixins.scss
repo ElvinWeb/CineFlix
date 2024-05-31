@@ -1,0 +1,12 @@
+@mixin breakpoint($point) {
+
+    @if map-has-key($breakpoints, $point) {
+
+        $breakpoint: map-get($breakpoints, $point);
+
+        @media only screen and (min-width: $breakpoint) {
+            @content;
+        }
+    }
+
+}

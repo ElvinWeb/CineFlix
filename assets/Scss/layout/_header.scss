@@ -6,8 +6,18 @@
     align-items: center;
     gap: 8px;
 
+    @include breakpoint("desktop") {
+        padding: 28px 56px;
+    }
+
     .logo {
         margin-inline-end: auto;
+
+        img {
+            @include breakpoint("desktop") {
+                width: 160px;
+            }
+        }
     }
 
     .menu-btn.active .menu,
@@ -32,6 +42,12 @@
         gap: 8px;
         z-index: 1;
         display: none;
+
+        @include breakpoint("tablet") {
+            all: unset;
+            display: block;
+            width: 360px;
+        }
 
         &.active {
             display: flex;

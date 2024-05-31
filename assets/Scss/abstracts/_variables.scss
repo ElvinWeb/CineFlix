@@ -11,6 +11,8 @@ $surface: hsla(250, 13%, 11%, 1);
 $text-color: hsla(250, 2%, 59%, 1);
 $white: hsla(0, 0%, 100%, 1);
 $shadow-blue: rgba(50, 50, 93, 0.25);
+$azure: hsl(211, 100%, 50%);
+$light-azure:hsl(214, 84%, 56%);
 $banner-overlay: 90deg,
 hsl(220, 17%, 7%) 0%,
 hsla(220, 17%, 7%, 0.5) 100%;
@@ -43,3 +45,5 @@ $radius-36: 36px;
 
 $transition-short: 250ms ease;
 $transition-long: 500ms ease;
+
+$breakpoints: ("mobile": 576px, "tablet": 768px, "desktop": 1200px);

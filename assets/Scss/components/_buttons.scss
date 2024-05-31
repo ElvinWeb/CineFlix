@@ -1,6 +1,10 @@
 .search-btn,
 .menu-btn {
     padding: 12px;
+
+    @include breakpoint("desktop") {
+        display: none;
+    }
 }
 
 .search-btn {
@@ -14,6 +18,10 @@
 
     &:is(:hover, :focus-visible) img {
         opacity: 1;
+    }
+
+    @include breakpoint("tablet") {
+        display: none;
     }
 }
 
@@ -36,7 +44,7 @@
 }
 
 .load-more {
-    background-color: $primary-variant;
+    background-color: $azure;
     margin-inline: auto;
     margin-block: 36px 60px;
 

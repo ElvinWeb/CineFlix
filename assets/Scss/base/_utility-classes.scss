@@ -43,7 +43,8 @@
     display: flex;
     align-items: center;
     gap: 4px;
-    .span{
+
+    .span {
         margin-top: 4px;
     }
 }
@@ -72,4 +73,13 @@
     height: calc(100vh - 96px);
     overflow-y: overlay;
     z-index: 1;
+
+    @include breakpoint("tablet") {
+        padding-inline: 24px;
+    }
+
+    @include breakpoint("desktop") {
+        height: calc(100vh - 104px);
+        border-top-left-radius: $radius-36;
+    }
 }

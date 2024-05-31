@@ -10,6 +10,11 @@
     z-index: 4;
     display: none;
 
+    @include breakpoint("desktop") {
+        top: 104px;
+        padding: 60px;
+    }
+
     .active {
         display: block;
     }

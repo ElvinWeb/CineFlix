@@ -5,6 +5,10 @@
     overflow: hidden;
     box-shadow: $shadow-blue 0px 13px 27px -5px, $background 0px 8px 16px -8px;
 
+    @include breakpoint("tablet") {
+        height: 500px;
+    }
+
     &-slider {
 
         .slider-item {
@@ -40,6 +44,22 @@
         bottom: 206px;
         z-index: 1;
         color: $text-color;
+
+        @include breakpoint("mobile") {
+            right: auto;
+            max-width: 500px;
+        }
+
+        @include breakpoint("tablet") {
+            bottom: 50%;
+            transform: translateY(50%);
+            left: 50px;
+        }
+
+        @include breakpoint("desktop") {
+            left: 100px;
+        }
+
     }
 
     :is(.heading, .banner-text) {
@@ -63,7 +83,7 @@
     }
 
     .btn {
-        background-color: $primary;
+        background-color: $azure;
 
         &:is(:hover, :focus-visible) {
             box-shadow: $shadow-2;
@@ -79,6 +99,10 @@
         user-select: none;
         padding: 4px 0 4px 4px;
         overflow-x: auto;
+
+        @include breakpoint("mobile") {
+            left: calc(100% - 400px);
+        }
 
         &::-webkit-scrollbar {
             display: none;

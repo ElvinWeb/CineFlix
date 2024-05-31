@@ -14,4 +14,8 @@
         opacity: 0.5;
         pointer-events: all;
     }
+
+    @include breakpoint("desktop") {
+        display: none;
+    }
 }

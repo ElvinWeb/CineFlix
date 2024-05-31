@@ -1,4 +1,9 @@
 .movie-detail {
+    @include breakpoint("tablet") {
+        display: flex;
+        align-items: flex-start;
+        gap: 40px;
+    }
 
     .backdrop-image {
         position: absolute;
@@ -12,6 +17,10 @@
         background-image: url("../Images/slider-banner.jpg");
         z-index: -1;
 
+        @include breakpoint("desktop") {
+            border-top-left-radius: $radius-36;
+        }
+
         &::after {
             content: "";
             position: absolute;
@@ -20,9 +29,43 @@
         }
     }
 
+    .detail-box {
+        @include breakpoint("tablet") {
+            flex-grow: 1;
+        }
+
+        .detail-content {
+            @include breakpoint("mobile") {
+                max-width: 750px;
+            }
+        }
+
+        .detail-list {
+            margin-block: 24px 32px;
+
+            .list-item {
+                display: flex;
+                align-items: flex-start;
+                gap: 8px;
+                margin-block-end: 12px;
+            }
+
+            .list-name {
+                color: $text-color;
+                min-width: 112px;
+            }
+        }
+    }
+
     .movie-poster {
         max-width: 300px;
         width: 100%;
+
+        @include breakpoint("tablet") {
+            flex-shrink: 0;
+            position: sticky;
+            top: 0;
+        }
     }
 
     .heading {
@@ -37,19 +80,16 @@
         margin-block: 12px 16px;
     }
 
-    .detail-list {
-        margin-block: 24px 32px;
-
-        .list-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 8px;
-            margin-block-end: 12px;
+    .slider-list {
+        @include breakpoint("tablet") {
+            margin-inline-start: 0;
+            border-radius: $radius-16 0 0 $radius-16;
         }
 
-        .list-name {
-            color: $text-color;
-            min-width: 112px;
+        .slider-inner::before {
+            @include breakpoint("tablet") {
+                display: none;
+            }
         }
     }
 
