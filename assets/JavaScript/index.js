@@ -1,13 +1,13 @@
-// import sidebar from "./sidebar.js";
+import { IMAGE_BASE_URL, API_KEY, API_URL } from "./config.js";
+import { sidebar } from "./sidebar.js";
 import {
   addEventOnElements,
   fetchDataFromServer,
   appendToMovieList,
 } from "./helpers.js";
-import { IMAGE_BASE_URL, API_KEY, API_URL } from "./config.js";
 
 const pageContent = document.querySelector("[page-content]");
-
+sidebar();
 
 const homePageSections = [
   {
@@ -117,7 +117,7 @@ const heroBanner = function ({ results: movieList }) {
 
     banner.querySelector(".control-inner").appendChild(controlItem);
   }
-  
+
   pageContent.appendChild(banner);
   addHeroSlide();
 

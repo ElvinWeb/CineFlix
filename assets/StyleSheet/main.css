@@ -138,6 +138,9 @@ body {
   align-items: center;
   gap: 4px;
 }
+.meta-item .span {
+  margin-top: 4px;
+}
 
 .card-badge {
   background-color: hsl(250, 6%, 20%);
@@ -180,6 +183,16 @@ body {
 }
 .movie-card .meta-list {
   justify-content: space-between;
+}
+.movie-card:hover .img-cover, .movie-card:checked .img-cover {
+  transform: scale(1.1);
+}
+.movie-card:hover .title, .movie-card:checked .title {
+  color: hsl(349, 69%, 51%);
+}
+.movie-card .img-cover,
+.movie-card .title {
+  transition: all 0.3s ease;
 }
 
 .poster-box {
@@ -244,6 +257,7 @@ body {
   height: 700px;
   border-radius: 24px;
   overflow: hidden;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, hsl(220, 17%, 7%) 0px 8px 16px -8px;
 }
 .banner-slider .slider-item {
   position: absolute;
@@ -322,11 +336,11 @@ body {
   flex-shrink: 0;
   filter: brightness(0.4);
 }
-.banner .slider-control .slider-item img {
-  transition: all 0.2s ease;
-}
-.banner .slider-control .slider-item img:hover {
+.banner .slider-control .slider-item:hover .img-cover {
   transform: scale(1.1);
+}
+.banner .slider-control .slider-item .img-cover {
+  transition: all 0.3s ease;
 }
 .banner .control-inner {
   display: flex;
@@ -339,8 +353,7 @@ body {
 
 .header {
   position: relative;
-  padding-block: 24px;
-  padding-inline: 16px;
+  padding: 25px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;

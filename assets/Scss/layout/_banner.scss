@@ -3,6 +3,7 @@
     height: 700px;
     border-radius: $radius-24;
     overflow: hidden;
+    box-shadow: $shadow-blue 0px 13px 27px -5px, $background 0px 8px 16px -8px;
 
     &-slider {
 
@@ -93,17 +94,15 @@
             border-radius: $radius-8;
             flex-shrink: 0;
             filter: brightness(0.4);
-    
-             img {
-                transition: all 0.2s ease;
-    
-                &:hover {
-                    transform: scale(1.1);
-                }
-            }
-    
-        }
 
+            &:hover .img-cover {
+                transform: scale(1.1);
+            }
+
+            .img-cover {
+                transition: all 0.3s ease;
+            }
+        }
 
     }
 
@@ -117,5 +116,5 @@
         }
     }
 
-    
+
 }

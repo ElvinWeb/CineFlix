@@ -7,6 +7,7 @@
         transform: rotate(1turn);
     }
 }
+
 .title {
     font-size: $fs-title;
     @extend %title;
@@ -42,6 +43,9 @@
     display: flex;
     align-items: center;
     gap: 4px;
+    .span{
+        margin-top: 4px;
+    }
 }
 
 .card-badge {

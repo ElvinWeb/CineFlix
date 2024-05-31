@@ -1,9 +1,7 @@
 import { addEventOnElements } from "./helpers.js";
-import { sidebar } from "./sidebar.js";
 
 const searchBox = document.querySelector("[search-box]");
 const searchTogglers = document.querySelectorAll("[search-toggler]");
-sidebar();
 
 addEventOnElements(searchTogglers, "click", function () {
   searchBox.classList.toggle("active");

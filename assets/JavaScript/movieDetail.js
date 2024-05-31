@@ -1,4 +1,5 @@
 import { API_KEY, API_URL, IMAGE_BASE_URL } from "./config.js";
+import { sidebar } from "./sidebar.js";
 import {
   fetchDataFromServer,
   getCasts,
@@ -7,8 +8,10 @@ import {
   filterVideos,
   appendToMovieList,
 } from "./helpers.js";
+
 const movieId = window.localStorage.getItem("movieId");
 const pageContent = document.querySelector("[page-content]");
+sidebar();
 
 fetchDataFromServer(
   `${API_URL}/movie/${movieId}?api_key=${API_KEY}&append_to_response=casts,videos,images,releases`,
@@ -28,7 +31,6 @@ fetchDataFromServer(
       casts: { cast, crew },
       videos: { results: videos },
     } = movie;
-    console.log(movie);
     document.title = `${title} - Tvflix`;
 
     const movieDetail = document.createElement("div");

@@ -46,7 +46,7 @@ export function sidebar() {
     for (const [genreId, genreName] of Object.entries(genreList)) {
       const link = document.createElement("a");
       link.classList.add("sidebar-link");
-      link.setAttribute("href", "./movieList.html");
+      link.setAttribute("href", "./movie-list.html");
       link.setAttribute("menu-close", "");
       link.setAttribute(
         "onclick",
@@ -63,17 +63,17 @@ export function sidebar() {
   };
   const toggleSidebar = function (sidebar) {
     const sidebarBtn = document.querySelector("[menu-btn]");
-    const sidebarTogglers = document.querySelectorAll("[menu-toggler]");
-    const sidebarClose = document.querySelectorAll("[menu-close]");
+    const sidebarTogglers = Array.from(document.querySelectorAll("[menu-toggler]"));
+    const sidebarClose = Array.from(document.querySelectorAll("[menu-close]"));
     const overlay = document.querySelector("[overlay]");
 
-    addEventOnElements(Array.from(sidebarTogglers), "click", function () {
+    addEventOnElements(sidebarTogglers, "click", function () {
       sidebar.classList.toggle("active");
       sidebarBtn.classList.toggle("active");
       overlay.classList.toggle("active");
     });
 
-    addEventOnElements(Array.from(sidebarClose), "click", function () {
+    addEventOnElements(sidebarClose, "click", function () {
       sidebar.classList.remove("active");
       sidebarBtn.classList.remove("active");
       overlay.classList.remove("active");

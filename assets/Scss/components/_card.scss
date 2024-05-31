@@ -17,6 +17,21 @@
         justify-content: space-between;
     }
 
+    &:hover .img-cover,
+    &:checked .img-cover {
+        transform: scale(1.1);
+    }
+
+    &:hover .title,
+    &:checked .title {
+        color: $primary-variant;
+    }
+
+    .img-cover,
+    .title {
+        transition: all 0.3s ease;
+    }
+
 }
 
 .poster-box {
