@@ -1,1 +1,1 @@
-<h3>#Movie-App</h3>
+<h3>CineFlix // Your Cinematic Companion</h3>
