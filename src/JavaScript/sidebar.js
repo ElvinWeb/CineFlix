@@ -1,7 +1,6 @@
 "use strict";
 import { addEventOnElements, fetchDataFromServer } from "./helpers.js";
 import { API_KEY, API_URL } from "./config.js";
-import tmdb_logo from "../Images/tmdb-logo.png";
 
 export function sidebar() {
   const genreList = {};
@@ -28,25 +27,25 @@ export function sidebar() {
     
       <p class="title">Languages</p>
     
-      <a href="./movie-list.html" menu-close class="sidebar-link"
+      <a href="/pages/movie-list.html" menu-close class="sidebar-link"
         onclick='getMovieList("with_original_language=en", "English")'>English</a>
     
-      <a href="./movie-list.html" menu-close class="sidebar-link"
+      <a href="/pages/movie-list.html" menu-close class="sidebar-link"
         onclick='getMovieList("with_original_language=hi", "Hindi")'>Hindi</a>
     
-      <a href="./movie-list.html" menu-close class="sidebar-link"
+      <a href="/pages/movie-list.html" menu-close class="sidebar-link"
         onclick='getMovieList("with_original_language=bn", "Bengali")'>Bengali</a>
     </div>
     
     <div class="sidebar-footer">
-      <img src=${tmdb_logo} width="130" height="17" alt="the movie database logo">
+      <img src="/src/Images/tmdb-logo.png" width="130" height="17" alt="the movie database logo">
     </div>
   `;
   const genreLink = function () {
     for (const [genreId, genreName] of Object.entries(genreList)) {
       const link = document.createElement("a");
       link.classList.add("sidebar-link");
-      link.setAttribute("href", "./movie-list.html");
+      link.setAttribute("href", "/pages/movie-list.html");
       link.setAttribute("menu-close", "");
       link.setAttribute(
         "onclick",

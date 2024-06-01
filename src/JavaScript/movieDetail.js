@@ -9,7 +9,6 @@ import {
 import { API_KEY, API_URL, IMAGE_BASE_URL } from "./config.js";
 import { sidebar } from "./sidebar.js";
 import { search } from "./search.js";
-import star_img from "../Images/star.png";
 
 const movieId = window.localStorage.getItem("movieId");
 const pageContent = document.querySelector("[page-content]");
@@ -56,7 +55,7 @@ fetchDataFromServer(
         <div class="meta-list">
     
           <div class="meta-item">
-            <img src=${star_img} width="20" height="20" alt="rating">
+            <img src="../Images/star.png" width="20" height="20" alt="rating">
     
             <span class="span">${vote_average.toFixed(1)}</span>
           </div>
