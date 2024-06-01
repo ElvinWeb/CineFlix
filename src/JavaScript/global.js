@@ -1,4 +1,6 @@
 import { addEventOnElements } from "./helpers.js";
+import "core-js/actual";
+import "regenerator-runtime/runtime";
 
 const searchBox = document.querySelector("[search-box]");
 const searchTogglers = document.querySelectorAll("[search-toggler]");

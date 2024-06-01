@@ -16,7 +16,7 @@ export function createMovieCard(movie) {
     <h4 class="title">${title}</h4>
     <div class="meta-list">
       <div class="meta-item">
-        <img src="./assets/images/star.png" width="20" height="20" loading="lazy" alt="rating">
+        <img src="./src/images/star.png" width="20" height="20" loading="lazy" alt="rating">
         <span class="span">${
           vote_average.toFixed(1) === "0.0" ? 6.2 : vote_average.toFixed(1)
         }</span>

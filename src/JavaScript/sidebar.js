@@ -39,7 +39,7 @@ export function sidebar() {
     </div>
     
     <div class="sidebar-footer">
-      <img src="./assets/images/tmdb-logo.svg" width="130" height="17" alt="the movie database logo">
+      <img src="./src/images/tmdb-logo.svg" width="130" height="17" alt="the movie database logo">
     </div>
   `;
   const genreLink = function () {

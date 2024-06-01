@@ -13,7 +13,7 @@ fetchDataFromServer(
   `${API_URL}/discover/movie?api_key=${API_KEY}&sort_by=popularity.desc&include_adult=false&page=${currentPage}&${urlParam}`,
   function ({ results: movieList, total_pages }) {
     totalPages = total_pages;
-    document.title = `${genreName} Movies - Tvflix`;
+    document.title = `${genreName} Movies ~ CineFlix`;
 
     const movieListElem = document.createElement("section");
     movieListElem.classList.add("movie-list", "genre-list");
@@ -53,3 +53,4 @@ fetchDataFromServer(
       });
   }
 );
+

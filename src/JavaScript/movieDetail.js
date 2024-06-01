@@ -31,7 +31,7 @@ fetchDataFromServer(
       casts: { cast, crew },
       videos: { results: videos },
     } = movie;
-    document.title = `${title} - Tvflix`;
+    document.title = `${title} ~ CineFlix`;
 
     const movieDetail = document.createElement("div");
     movieDetail.classList.add("movie-detail");
@@ -53,7 +53,7 @@ fetchDataFromServer(
         <div class="meta-list">
     
           <div class="meta-item">
-            <img src="./assets/images/star.png" width="20" height="20" alt="rating">
+            <img src="./src/images/star.png" width="20" height="20" alt="rating">
     
             <span class="span">${vote_average.toFixed(1)}</span>
           </div>
@@ -142,3 +142,4 @@ const addSuggestedMovies = function ({ results: movieList }, title) {
   appendToMovieList(movieListElem, movieList, "slider-inner");
   pageContent.appendChild(movieListElem);
 };
+
