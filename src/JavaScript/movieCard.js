@@ -1,5 +1,5 @@
 import { IMAGE_BASE_URL } from "./config.js";
-import { getMovieDetail } from "./global.js";
+import star_img from "../Images/star.png"
 
 export function createMovieCard(movie) {
   const { poster_path, title, vote_average, release_date, id } = movie;
@@ -7,16 +7,14 @@ export function createMovieCard(movie) {
   card.classList.add("movie-card");
 
   card.innerHTML = `
-  <a href="./detail.html" class="card-btn" title="${title}" onclick=${getMovieDetail(
-    id
-  )}>
+  <a href="./detail.html" class="card-btn" title="${title}" onclick="getMovieDetail(${id})">
     <figure class="poster-box card-banner">
       <img src="${IMAGE_BASE_URL}w342${poster_path}" alt="${title}" class="img-cover" loading="lazy">
     </figure>
     <h4 class="title">${title}</h4>
     <div class="meta-list">
       <div class="meta-item">
-        <img src="./src/images/star.png" width="20" height="20" loading="lazy" alt="rating">
+        <img src=${star_img} width="20" height="20" loading="lazy" alt="rating">
         <span class="span">${
           vote_average.toFixed(1) === "0.0" ? 6.2 : vote_average.toFixed(1)
         }</span>

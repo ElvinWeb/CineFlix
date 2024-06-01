@@ -9,11 +9,10 @@ addEventOnElements(searchTogglers, "click", function () {
   searchBox.classList.toggle("active");
 });
 
-export const getMovieDetail = function (movieId) {
+const getMovieDetail = function (movieId) {
   window.localStorage.setItem("movieId", String(movieId));
 };
-
-export const getMovieList = function (urlParam, genreName) {
+const getMovieList = function (urlParam, genreName) {
   window.localStorage.setItem("urlParam", urlParam);
   window.localStorage.setItem("genreName", genreName);
 };

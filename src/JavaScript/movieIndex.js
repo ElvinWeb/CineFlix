@@ -1,13 +1,16 @@
 import { IMAGE_BASE_URL, API_KEY, API_URL } from "./config.js";
 import { sidebar } from "./sidebar.js";
+import { search } from "./search.js";
 import {
   addEventOnElements,
   fetchDataFromServer,
   appendToMovieList,
 } from "./helpers.js";
+import play_img from "../Images/play_circle.png";
 
 const pageContent = document.querySelector("[page-content]");
 sidebar();
+search();
 
 const homePageSections = [
   {
@@ -35,18 +38,6 @@ const genreList = {
   },
 };
 
-fetchDataFromServer(
-  `${API_URL}/genre/movie/list?api_key=${API_KEY}`,
-  function ({ genres }) {
-    for (const { id, name } of genres) {
-      genreList[id] = name;
-    }
-    fetchDataFromServer(
-      `${API_URL}/movie/popular?api_key=${API_KEY}&page=1`,
-      heroBanner
-    );
-  }
-);
 const heroBanner = function ({ results: movieList }) {
   const banner = document.createElement("section");
   banner.classList.add("banner");
@@ -97,7 +88,7 @@ const heroBanner = function ({ results: movieList }) {
         <p class="banner-text">${overview}</p>
       
         <a href="./detail.html" class="btn" onclick="getMovieDetail(${id})">
-          <img src="./src/images/play_circle.png" width="24" height="24" aria-hidden="true" alt="play circle">
+          <img src=${play_img} width="24" height="24" aria-hidden="true" alt="play circle">
       
           <span class="span">Watch Now</span>
         </a>
@@ -171,4 +162,15 @@ const createMovieList = function ({ results: movieList }, title) {
   appendToMovieList(movieListElem, movieList, "slider-inner");
   pageContent.appendChild(movieListElem);
 };
-
+fetchDataFromServer(
+  `${API_URL}/genre/movie/list?api_key=${API_KEY}`,
+  function ({ genres }) {
+    for (const { id, name } of genres) {
+      genreList[id] = name;
+    }
+    fetchDataFromServer(
+      `${API_URL}/movie/popular?api_key=${API_KEY}&page=1`,
+      heroBanner
+    );
+  }
+);

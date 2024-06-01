@@ -5,7 +5,7 @@
   "default": "index.html",
   "scripts": {
     "start": "parcel index.html detail.html movie-list.html",
-    "build": "parcel build index.html detail.html movie-list.html --dist-dir ./dist"
+    "build": "parcel build index.html detail.html movie-list.html"
   },
   "repository": {
     "type": "git",
@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/ElvinWeb/Movie-App#readme",
   "dependencies": {
+    "@parcel/resolver-glob": "^2.12.0",
+    "@parcel/transformer-image": "^2.12.0",
     "core-js": "^3.37.1",
     "parcel": "^2.12.0",
     "regenerator-runtime": "^0.14.1",

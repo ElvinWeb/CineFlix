@@ -1,5 +1,6 @@
 import { API_KEY, API_URL, IMAGE_BASE_URL } from "./config.js";
 import { sidebar } from "./sidebar.js";
+import { search } from "./search.js";
 import {
   fetchDataFromServer,
   getCasts,
@@ -8,10 +9,12 @@ import {
   filterVideos,
   appendToMovieList,
 } from "./helpers.js";
+import star_img from "../Images/star.png"
 
 const movieId = window.localStorage.getItem("movieId");
 const pageContent = document.querySelector("[page-content]");
 sidebar();
+search();
 
 fetchDataFromServer(
   `${API_URL}/movie/${movieId}?api_key=${API_KEY}&append_to_response=casts,videos,images,releases`,
@@ -53,7 +56,7 @@ fetchDataFromServer(
         <div class="meta-list">
     
           <div class="meta-item">
-            <img src="./src/images/star.png" width="20" height="20" alt="rating">
+            <img src=${star_img} width="20" height="20" alt="rating">
     
             <span class="span">${vote_average.toFixed(1)}</span>
           </div>
@@ -142,4 +145,3 @@ const addSuggestedMovies = function ({ results: movieList }, title) {
   appendToMovieList(movieListElem, movieList, "slider-inner");
   pageContent.appendChild(movieListElem);
 };
-

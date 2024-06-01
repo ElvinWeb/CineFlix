@@ -16,7 +16,8 @@ export const appendToMovieList = function (
 export const fetchDataFromServer = function (url, callback, optionalParam) {
   fetch(url)
     .then((response) => response.json())
-    .then((data) => callback(data, optionalParam));
+    .then((data) => callback(data, optionalParam))
+    .catch((error) => console.log(error));
 };
 export const getGenres = function (genreList) {
   const newGenreList = [];

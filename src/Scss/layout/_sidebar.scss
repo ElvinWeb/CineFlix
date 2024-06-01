@@ -60,7 +60,7 @@
         transition: $transition-short;
 
         &:is(:hover, :focus-visible) {
-            color: $on-background;
+            color: $light-azure;
         }
     }
 

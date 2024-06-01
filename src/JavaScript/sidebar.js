@@ -1,22 +1,14 @@
 "use strict";
 import { API_KEY, API_URL } from "./config.js";
 import { addEventOnElements, fetchDataFromServer } from "./helpers.js";
-import { getMovieList } from "./global.js";
+import tmdb_logo from "../Images/tmdb-logo.png";
 
 export function sidebar() {
   const genreList = {};
   const sidebarInner = document.createElement("div");
   sidebarInner.classList.add("sidebar-inner");
 
-  fetchDataFromServer(
-    `${API_URL}/genre/movie/list?api_key=${API_KEY}`,
-    function ({ genres }) {
-      for (const { id, name } of genres) {
-        genreList[id] = name;
-      }
-      genreLink();
-    }
-  );
+  
   sidebarInner.innerHTML = `
     <div class="sidebar-list">
     
@@ -39,7 +31,7 @@ export function sidebar() {
     </div>
     
     <div class="sidebar-footer">
-      <img src="./src/images/tmdb-logo.svg" width="130" height="17" alt="the movie database logo">
+      <img src=${tmdb_logo} width="130" height="17" alt="the movie database logo">
     </div>
   `;
   const genreLink = function () {
@@ -50,7 +42,7 @@ export function sidebar() {
       link.setAttribute("menu-close", "");
       link.setAttribute(
         "onclick",
-        getMovieList(`with_genres=${genreId}`, `${genreName}`)
+        `getMovieList("with_genres=${genreId}", "${genreName}")`
       );
       link.textContent = genreName;
 
@@ -63,7 +55,9 @@ export function sidebar() {
   };
   const toggleSidebar = function (sidebar) {
     const sidebarBtn = document.querySelector("[menu-btn]");
-    const sidebarTogglers = Array.from(document.querySelectorAll("[menu-toggler]"));
+    const sidebarTogglers = Array.from(
+      document.querySelectorAll("[menu-toggler]")
+    );
     const sidebarClose = Array.from(document.querySelectorAll("[menu-close]"));
     const overlay = document.querySelector("[overlay]");
 
@@ -79,4 +73,13 @@ export function sidebar() {
       overlay.classList.remove("active");
     });
   };
+  fetchDataFromServer(
+    `${API_URL}/genre/movie/list?api_key=${API_KEY}`,
+    function ({ genres }) {
+      for (const { id, name } of genres) {
+        genreList[id] = name;
+      }
+      genreLink();
+    }
+  );
 }
