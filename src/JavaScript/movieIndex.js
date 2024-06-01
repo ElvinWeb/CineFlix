@@ -1,16 +1,29 @@
-import { IMAGE_BASE_URL, API_KEY, API_URL } from "./config.js";
-import { sidebar } from "./sidebar.js";
-import { search } from "./search.js";
 import {
   addEventOnElements,
   fetchDataFromServer,
   appendToMovieList,
 } from "./helpers.js";
+import { IMAGE_BASE_URL, API_KEY, API_URL } from "./config.js";
+import { sidebar } from "./sidebar.js";
+import { search } from "./search.js";
 import play_img from "../Images/play_circle.png";
 
 const pageContent = document.querySelector("[page-content]");
 sidebar();
 search();
+
+fetchDataFromServer(
+  `${API_URL}/genre/movie/list?api_key=${API_KEY}`,
+  function ({ genres }) {
+    for (const { id, name } of genres) {
+      genreList[id] = name;
+    }
+    fetchDataFromServer(
+      `${API_URL}/movie/popular?api_key=${API_KEY}&page=1`,
+      heroBanner
+    );
+  }
+);
 
 const homePageSections = [
   {
@@ -162,15 +175,4 @@ const createMovieList = function ({ results: movieList }, title) {
   appendToMovieList(movieListElem, movieList, "slider-inner");
   pageContent.appendChild(movieListElem);
 };
-fetchDataFromServer(
-  `${API_URL}/genre/movie/list?api_key=${API_KEY}`,
-  function ({ genres }) {
-    for (const { id, name } of genres) {
-      genreList[id] = name;
-    }
-    fetchDataFromServer(
-      `${API_URL}/movie/popular?api_key=${API_KEY}&page=1`,
-      heroBanner
-    );
-  }
-);
+

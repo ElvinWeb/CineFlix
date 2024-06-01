@@ -1,6 +1,6 @@
 "use strict";
-import { API_KEY, API_URL } from "./config.js";
 import { addEventOnElements, fetchDataFromServer } from "./helpers.js";
+import { API_KEY, API_URL } from "./config.js";
 import tmdb_logo from "../Images/tmdb-logo.png";
 
 export function sidebar() {
@@ -8,7 +8,15 @@ export function sidebar() {
   const sidebarInner = document.createElement("div");
   sidebarInner.classList.add("sidebar-inner");
 
-  
+  fetchDataFromServer(
+    `${API_URL}/genre/movie/list?api_key=${API_KEY}`,
+    function ({ genres }) {
+      for (const { id, name } of genres) {
+        genreList[id] = name;
+      }
+      genreLink();
+    }
+  );
   sidebarInner.innerHTML = `
     <div class="sidebar-list">
     
@@ -73,13 +81,4 @@ export function sidebar() {
       overlay.classList.remove("active");
     });
   };
-  fetchDataFromServer(
-    `${API_URL}/genre/movie/list?api_key=${API_KEY}`,
-    function ({ genres }) {
-      for (const { id, name } of genres) {
-        genreList[id] = name;
-      }
-      genreLink();
-    }
-  );
 }

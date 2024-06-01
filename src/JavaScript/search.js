@@ -1,5 +1,5 @@
-import { API_URL, API_KEY, SEARCH_TIMEOUT_SEC } from "./config";
-import { appendToMovieList, fetchDataFromServer } from "./helpers";
+import { appendToMovieList, fetchDataFromServer } from "./helpers.js";
+import { API_URL, API_KEY, SEARCH_TIMEOUT_SEC } from "./config.js";
 
 export function search() {
   const searchWrapper = document.querySelector("[search-wrapper]");

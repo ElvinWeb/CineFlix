@@ -1,7 +1,7 @@
+import { fetchDataFromServer, appendToMovieList } from "./helpers.js";
+import { API_KEY, API_URL } from "./config.js";
 import { sidebar } from "./sidebar.js";
 import { search } from "./search.js";
-import { API_KEY, API_URL } from "./config.js";
-import { fetchDataFromServer, appendToMovieList } from "./helpers.js";
 sidebar();
 search();
 

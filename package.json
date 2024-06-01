@@ -4,8 +4,8 @@
   "description": "<h3>CineFlix // Your Cinematic Companion</h3>",
   "default": "index.html",
   "scripts": {
-    "start": "parcel index.html detail.html movie-list.html",
-    "build": "parcel build index.html detail.html movie-list.html"
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
   },
   "repository": {
     "type": "git",

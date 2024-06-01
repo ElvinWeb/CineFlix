@@ -1,6 +1,3 @@
-import { API_KEY, API_URL, IMAGE_BASE_URL } from "./config.js";
-import { sidebar } from "./sidebar.js";
-import { search } from "./search.js";
 import {
   fetchDataFromServer,
   getCasts,
@@ -9,7 +6,10 @@ import {
   filterVideos,
   appendToMovieList,
 } from "./helpers.js";
-import star_img from "../Images/star.png"
+import { API_KEY, API_URL, IMAGE_BASE_URL } from "./config.js";
+import { sidebar } from "./sidebar.js";
+import { search } from "./search.js";
+import star_img from "../Images/star.png";
 
 const movieId = window.localStorage.getItem("movieId");
 const pageContent = document.querySelector("[page-content]");
