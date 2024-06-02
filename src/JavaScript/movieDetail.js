@@ -55,7 +55,7 @@ fetchDataFromServer(
         <div class="meta-list">
     
           <div class="meta-item">
-            <img src="../Images/star.png" width="20" height="20" alt="rating">
+            <img src="/src/Images/star.png" width="20" height="20" alt="rating">
     
             <span class="span">${vote_average.toFixed(1)}</span>
           </div>

@@ -27,6 +27,10 @@
                 position: absolute;
                 inset: 0;
                 background-image: linear-gradient($banner-overlay);
+
+                @include breakpoint("tablet") {
+                    background-image: linear-gradient($banner-light-overlay);
+                }
             }
         }
 
@@ -108,11 +112,6 @@
             display: none;
         }
 
-        .active {
-            filter: brightness(1);
-            box-shadow: $shadow-1;
-        }
-
         .slider-item {
             width: 100px;
             border-radius: $radius-8;
@@ -127,6 +126,12 @@
                 transition: all 0.3s ease;
             }
         }
+
+        .active {
+            filter: brightness(1);
+            box-shadow: $shadow-1;
+        }
+
 
     }
 

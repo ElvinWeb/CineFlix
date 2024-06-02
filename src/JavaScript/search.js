@@ -1,14 +1,24 @@
-import { appendToMovieList, fetchDataFromServer } from "./helpers.js";
+import {
+  appendToMovieList,
+  fetchDataFromServer,
+  addEventOnElements,
+} from "./helpers.js";
 import { API_URL, API_KEY, SEARCH_TIMEOUT_SEC } from "./config.js";
 
 export function search() {
   const searchWrapper = document.querySelector("[search-wrapper]");
   const searchField = document.querySelector("[search-field]");
+  const searchBox = document.querySelector("[search-box]");
+  const searchTogglers = document.querySelectorAll("[search-toggler]");
 
   const searchResultModal = document.createElement("div");
   searchResultModal.classList.add("search-modal");
   document.querySelector("main").appendChild(searchResultModal);
   let searchTimeout;
+
+  addEventOnElements(searchTogglers, "click", function () {
+    searchBox.classList.toggle("active");
+  });
 
   searchField.addEventListener("input", function () {
     if (!searchField.value.trim()) {

@@ -18,6 +18,10 @@
     font-size: $fs-heading;
     line-height: 1.2;
     @extend %title;
+
+    @include breakpoint("tablet") {
+        font-size: 5.4rem;
+    }
 }
 
 .title-large {

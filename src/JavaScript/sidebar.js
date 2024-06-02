@@ -26,15 +26,38 @@ export function sidebar() {
     <div class="sidebar-list">
     
       <p class="title">Languages</p>
+
+      <a href="/pages/movie-list.html" menu-close class="sidebar-link"
+        onclick='getMovieList("with_original_language=az", "Azerbaijan")'>Azerbaijan
+      </a>
     
       <a href="/pages/movie-list.html" menu-close class="sidebar-link"
-        onclick='getMovieList("with_original_language=en", "English")'>English</a>
+        onclick='getMovieList("with_original_language=en", "English")'>English
+      </a>
     
       <a href="/pages/movie-list.html" menu-close class="sidebar-link"
-        onclick='getMovieList("with_original_language=hi", "Hindi")'>Hindi</a>
+        onclick='getMovieList("with_original_language=fr", "France")'>France
+      </a>
     
       <a href="/pages/movie-list.html" menu-close class="sidebar-link"
-        onclick='getMovieList("with_original_language=bn", "Bengali")'>Bengali</a>
+        onclick='getMovieList("with_original_language=de", "Germany")'>Germany
+      </a>
+
+      <a href="/pages/movie-list.html" menu-close class="sidebar-link"
+        onclick='getMovieList("with_original_language=ru", "Russian")'>Russian
+      </a>
+
+      <a href="/pages/movie-list.html" menu-close class="sidebar-link"
+        onclick='getMovieList("with_original_language=tr", "Turkey")'>Turkey
+      </a>
+
+      <a href="/pages/movie-list.html" menu-close class="sidebar-link"
+        onclick='getMovieList("with_original_language=it", "Italy")'>Italy
+      </a>
+
+      <a href="/pages/movie-list.html" menu-close class="sidebar-link"
+        onclick='getMovieList("with_original_language=es", "Spain")'>Spain
+      </a>
     </div>
     
     <div class="sidebar-footer">
