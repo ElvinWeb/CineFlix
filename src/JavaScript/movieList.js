@@ -5,6 +5,7 @@ import { search } from "./search.js";
 sidebar();
 search();
 
+
 let currentPage = 1;
 let totalPages = 0;
 const pageContent = document.querySelector("[page-content]");
@@ -15,7 +16,7 @@ fetchDataFromServer(
   `${API_URL}/discover/movie?api_key=${API_KEY}&sort_by=popularity.desc&include_adult=false&page=${currentPage}&${urlParam}`,
   function ({ results: movieList, total_pages }) {
     totalPages = total_pages;
-    document.title = `${genreName} Movies ~ CineFlix`;
+    document.title = `CineFlix ~ ${genreName} Movies`;
 
     const movieListElem = document.createElement("section");
     movieListElem.classList.add("movie-list", "genre-list");

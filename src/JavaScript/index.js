@@ -11,6 +11,7 @@ const pageContent = document.querySelector("[page-content]");
 sidebar();
 search();
 
+
 fetchDataFromServer(
   `${API_URL}/genre/movie/list?api_key=${API_KEY}`,
   function ({ genres }) {

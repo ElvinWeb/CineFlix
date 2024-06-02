@@ -15,6 +15,7 @@ const pageContent = document.querySelector("[page-content]");
 sidebar();
 search();
 
+
 fetchDataFromServer(
   `${API_URL}/movie/${movieId}?api_key=${API_KEY}&append_to_response=casts,videos,images,releases`,
   function (movie) {
@@ -33,7 +34,7 @@ fetchDataFromServer(
       casts: { cast, crew },
       videos: { results: videos },
     } = movie;
-    document.title = `${title} ~ CineFlix`;
+    document.title = `CineFlix ~ ${title}`;
 
     const movieDetail = document.createElement("div");
     movieDetail.classList.add("movie-detail");
@@ -144,3 +145,5 @@ const addSuggestedMovies = function ({ results: movieList }, title) {
   appendToMovieList(movieListElem, movieList, "slider-inner");
   pageContent.appendChild(movieListElem);
 };
+
+

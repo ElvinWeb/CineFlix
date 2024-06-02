@@ -1,0 +1,129 @@
+.search-modal {
+    position: fixed;
+    top: 96px;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: $surface;
+    padding: 50px 24px;
+    overflow-y: overlay;
+    z-index: 4;
+    display: none;
+
+    @include breakpoint("desktop") {
+        top: 104px;
+        padding: 60px;
+    }
+
+    &.active {
+        display: block;
+    }
+
+    .label {
+        color: $azure;
+        font-weight: $weight-bold;
+        margin-block-end: 8px;
+    }
+
+    &::after {
+        content: "";
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 150px;
+        background-image: linear-gradient($bottom-overlay);
+        z-index: 1;
+        pointer-events: none;
+    }
+
+    .notfound {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        max-width: 910px;
+        width: 100%;
+        line-height: 1.4;
+        text-align: center;
+
+        .notfound-404 {
+            position: relative;
+            height: 200px;
+
+            h1 {
+                font-family: 'Montserrat', sans-serif;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                font-size: 220px;
+                font-weight: 900;
+                margin: 0px;
+                color: #fff;
+                text-transform: uppercase;
+                letter-spacing: 10px;
+            }
+        }
+
+        h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #fff;
+            margin-top: 20px;
+            margin-bottom: 15px;
+        }
+
+        .home-btn {
+            display: inline-block;
+            font-weight: 700;
+            text-decoration: none;
+            background-color: transparent;
+            border: 2px solid transparent;
+            text-transform: uppercase;
+            padding: 13px 25px;
+            font-size: 18px;
+            border-radius: 40px;
+            margin: 7px;
+            color: $azure;
+            background: #fff;
+            transition: all 0.2s ease;
+
+            &:hover {
+                opacity: 0.9;
+            }
+        }
+
+    }
+}
+
+
+
+
+
+@media only screen and (max-width: 767px) {
+    .notfound .notfound-404 h1 {
+        font-size: 182px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .notfound .notfound-404 {
+        height: 146px;
+    }
+
+    .notfound .notfound-404 h1 {
+        font-size: 146px;
+    }
+
+    .notfound h2 {
+        font-size: 16px;
+    }
+
+    .notfound .home-btn,
+    .notfound .contact-btn {
+        font-size: 14px;
+    }
+}

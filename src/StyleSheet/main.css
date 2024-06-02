@@ -534,11 +534,11 @@ body {
     padding: 60px;
   }
 }
-.search-modal .active {
+.search-modal.active {
   display: block;
 }
 .search-modal .label {
-  color: hsl(349, 69%, 51%);
+  color: hsl(211, 100%, 50%);
   font-weight: 700;
   margin-block-end: 8px;
 }
@@ -553,7 +553,81 @@ body {
   z-index: 1;
   pointer-events: none;
 }
+.search-modal .notfound {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 910px;
+  width: 100%;
+  line-height: 1.4;
+  text-align: center;
+}
+.search-modal .notfound .notfound-404 {
+  position: relative;
+  height: 200px;
+}
+.search-modal .notfound .notfound-404 h1 {
+  font-family: "Montserrat", sans-serif;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 220px;
+  font-weight: 900;
+  margin: 0px;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 10px;
+}
+.search-modal .notfound h2 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #fff;
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+.search-modal .notfound .home-btn {
+  display: inline-block;
+  font-weight: 700;
+  text-decoration: none;
+  background-color: transparent;
+  border: 2px solid transparent;
+  text-transform: uppercase;
+  padding: 13px 25px;
+  font-size: 18px;
+  border-radius: 40px;
+  margin: 7px;
+  color: hsl(211, 100%, 50%);
+  background: #fff;
+  transition: all 0.2s ease;
+}
+.search-modal .notfound .home-btn:hover {
+  opacity: 0.9;
+}
 
+@media only screen and (max-width: 767px) {
+  .notfound .notfound-404 h1 {
+    font-size: 182px;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .notfound .notfound-404 {
+    height: 146px;
+  }
+  .notfound .notfound-404 h1 {
+    font-size: 146px;
+  }
+  .notfound h2 {
+    font-size: 16px;
+  }
+  .notfound .home-btn,
+  .notfound .contact-btn {
+    font-size: 14px;
+  }
+}
 @media only screen and (min-width: 768px) {
   .movie-detail {
     display: flex;
