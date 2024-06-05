@@ -11,12 +11,15 @@
     }
 
     .logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         margin-inline-end: auto;
+        font-size: $fs-heading;
+        font-weight: 700;
 
-        img {
-            @include breakpoint("desktop") {
-                width: 160px;
-            }
+        @media only screen and (max-width: 1200px) {
+            font-size: $fs-heading-lg;
         }
     }
 

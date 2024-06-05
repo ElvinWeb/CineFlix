@@ -191,6 +191,10 @@ body {
   }
 }
 
+.text-primary {
+  color: hsl(211, 100%, 50%);
+}
+
 .movie-card {
   width: 200px;
 }
@@ -357,7 +361,6 @@ body {
   overflow: hidden;
 }
 .banner .heading {
-  -webkit-line-clamp: 3;
   margin-block-end: 16px;
 }
 .banner .genre {
@@ -432,11 +435,16 @@ body {
   }
 }
 .header .logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-inline-end: auto;
+  font-size: 4rem;
+  font-weight: 700;
 }
-@media only screen and (min-width: 1200px) {
-  .header .logo img {
-    width: 160px;
+@media only screen and (max-width: 1200px) {
+  .header .logo {
+    font-size: 4.2rem;
   }
 }
 .header .menu-btn.active .menu,
@@ -862,4 +870,43 @@ body {
 .slider-list .slider-inner::before, .slider-list .slider-inner::after {
   content: "";
   min-width: 4px;
+}
+
+.intro {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: hsl(220, 17%, 7%);
+  transition: all 1s;
+}
+.intro-logo--pos {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.intro-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 5rem;
+}
+.intro-logo .logo-span {
+  position: relative;
+  display: inline-block;
+  bottom: -20px;
+  opacity: 0;
+}
+.intro-logo .logo-span.active {
+  bottom: 0;
+  opacity: 1;
+  transition: ease-in-out 0.5s;
+}
+.intro-logo .logo-span.fade {
+  bottom: 150px;
+  opacity: 0;
+  transition: ease-in-out 0.4s;
 }

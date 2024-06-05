@@ -9,12 +9,12 @@ import {
 import { API_KEY, API_URL, IMAGE_BASE_URL } from "./config.js";
 import { sidebar } from "./sidebar.js";
 import { search } from "./search.js";
+import { setIntroAnimation } from "./intro.js";
 
 const movieId = window.localStorage.getItem("movieId");
 const pageContent = document.querySelector("[page-content]");
 sidebar();
 search();
-
 
 fetchDataFromServer(
   `${API_URL}/movie/${movieId}?api_key=${API_KEY}&append_to_response=casts,videos,images,releases`,
@@ -146,4 +146,4 @@ const addSuggestedMovies = function ({ results: movieList }, title) {
   pageContent.appendChild(movieListElem);
 };
 
-
+window.addEventListener("DOMContentLoaded", setIntroAnimation);

@@ -6,11 +6,11 @@ import {
 import { IMAGE_BASE_URL, API_KEY, API_URL } from "./config.js";
 import { sidebar } from "./sidebar.js";
 import { search } from "./search.js";
+import { setIntroAnimation } from "./intro.js";
 
 const pageContent = document.querySelector("[page-content]");
 sidebar();
 search();
-
 
 fetchDataFromServer(
   `${API_URL}/genre/movie/list?api_key=${API_KEY}`,
@@ -176,3 +176,4 @@ const createMovieList = function ({ results: movieList }, title) {
   pageContent.appendChild(movieListElem);
 };
 
+window.addEventListener("DOMContentLoaded", setIntroAnimation);

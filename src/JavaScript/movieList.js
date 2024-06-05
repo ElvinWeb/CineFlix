@@ -2,9 +2,9 @@ import { fetchDataFromServer, appendToMovieList } from "./helpers.js";
 import { API_KEY, API_URL } from "./config.js";
 import { sidebar } from "./sidebar.js";
 import { search } from "./search.js";
+import { setIntroAnimation } from "./intro.js";
 sidebar();
 search();
-
 
 let currentPage = 1;
 let totalPages = 0;
@@ -57,3 +57,4 @@ fetchDataFromServer(
   }
 );
 
+window.addEventListener("DOMContentLoaded", setIntroAnimation);

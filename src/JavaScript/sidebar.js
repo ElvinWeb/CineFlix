@@ -4,6 +4,13 @@ import { API_KEY, API_URL } from "./config.js";
 
 export function sidebar() {
   const genreList = {};
+  const sidebarBtn = document.querySelector("[menu-btn]");
+  const sidebarTogglers = Array.from(
+    document.querySelectorAll("[menu-toggler]")
+  );
+  const sidebarClose = Array.from(document.querySelectorAll("[menu-close]"));
+  const overlay = document.querySelector("[overlay]");
+  
   const sidebarInner = document.createElement("div");
   sidebarInner.classList.add("sidebar-inner");
 
@@ -84,13 +91,6 @@ export function sidebar() {
     toggleSidebar(sidebar);
   };
   const toggleSidebar = function (sidebar) {
-    const sidebarBtn = document.querySelector("[menu-btn]");
-    const sidebarTogglers = Array.from(
-      document.querySelectorAll("[menu-toggler]")
-    );
-    const sidebarClose = Array.from(document.querySelectorAll("[menu-close]"));
-    const overlay = document.querySelector("[overlay]");
-
     addEventOnElements(sidebarTogglers, "click", function () {
       sidebar.classList.toggle("active");
       sidebarBtn.classList.toggle("active");

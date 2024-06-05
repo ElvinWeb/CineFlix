@@ -45,6 +45,28 @@ const filterVideos = function (videoList) {
       (type === "Trailer" || type === "Teaser") && site === "YouTube"
   );
 };
+const animateSpans = function (spans, step) {
+  spans.forEach((span, i) => {
+    setTimeout(() => {
+      span.classList.add("active");
+    }, (i + 1) * step);
+  });
+};
+const removeAndAddClass = function (spans, delay, step) {
+  setTimeout(() => {
+    spans.forEach((span, i) => {
+      setTimeout(() => {
+        span.classList.remove("active");
+        span.classList.add("fade");
+      }, (i + 1) * step);
+    });
+  }, delay);
+};
+const hideElement = function (element, delay) {
+  setTimeout(() => {
+    element.style.top = "-100vh";
+  }, delay);
+};
 
 export {
   addEventOnElements,
@@ -54,4 +76,7 @@ export {
   getGenres,
   getDirectors,
   filterVideos,
+  animateSpans,
+  removeAndAddClass,
+  hideElement,
 };
