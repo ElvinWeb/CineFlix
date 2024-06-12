@@ -58,8 +58,10 @@
     }
 
     .movie-poster {
-        max-width: 300px;
-        width: 100%;
+        @include breakpoint("mobile") {
+            max-width: 300px;
+            width: 100%;
+        }
 
         @include breakpoint("tablet") {
             flex-shrink: 0;
