@@ -62,6 +62,10 @@
         &:is(:hover, :focus-visible) {
             color: $light-azure;
         }
+
+        &.active-link {
+            color: $light-azure !important;
+        }
     }
 
 

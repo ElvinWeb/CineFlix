@@ -1,4 +1,4 @@
-import { createMovieCard } from "./movieCard.js";
+import createMovieCard from "./movieCard.js";
 
 const addEventOnElements = function (elements, eventType, callback) {
   for (const elem of elements) elem.addEventListener(eventType, callback);

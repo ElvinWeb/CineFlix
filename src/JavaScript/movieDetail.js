@@ -7,18 +7,47 @@ import {
   appendToMovieList,
 } from "./helpers.js";
 import { API_KEY, API_URL, IMAGE_BASE_URL } from "./config.js";
-import { sidebar } from "./sidebar.js";
-import { search } from "./search.js";
-import { setIntroAnimation } from "./intro.js";
+import sidebar from "./sidebar.js";
+import search from "./search.js";
+import intro from "./intro.js";
 
-const movieId = window.localStorage.getItem("movieId");
-const pageContent = document.querySelector("[page-content]");
+intro();
 sidebar();
 search();
 
-fetchDataFromServer(
-  `${API_URL}/movie/${movieId}?api_key=${API_KEY}&append_to_response=casts,videos,images,releases`,
-  function (movie) {
+function movieDetail() {
+  const movieId = window.localStorage.getItem("movieId");
+  const pageContent = document.querySelector("[page-content]");
+  const fullApiUrl = `${API_URL}/movie/${movieId}?api_key=${API_KEY}&append_to_response=casts,videos,images,releases`;
+  const fullSuggestedApiUrl = `${API_URL}/movie/${movieId}/recommendations?api_key=${API_KEY}&page=1`;
+
+  const addSuggestedMovies = function ({ results: movieList }) {
+    const movieListElem = document.createElement("section");
+    movieListElem.classList.add("movie-list");
+    movieListElem.ariaLabel = "You May Also Like";
+    movieListElem.innerHTML = `
+    <div class="title-wrapper">
+      <h3 class="title-large">You May Also Like</h3>
+    </div>
+    <div class="slider-list">
+      <div class="slider-inner"></div>
+    </div>
+  `;
+    appendToMovieList(movieListElem, movieList, "slider-inner");
+    pageContent.appendChild(movieListElem);
+  };
+  const movieReleatedVideos = function (movieDetail, videos) {
+    for (const { key, name } of filterVideos(videos)) {
+      const videoCard = document.createElement("div");
+      videoCard.classList.add("video-card");
+      videoCard.innerHTML = `
+      <iframe width="500" height="294" src="https://www.youtube.com/embed/${key}?&theme=dark&color=white&rel=0"
+        frameborder="0" allowfullscreen="1" title="${name}" class="img-cover" loading="lazy"></iframe>
+    `;
+      movieDetail.querySelector(".slider-inner").appendChild(videoCard);
+    }
+  };
+  const movieDetailMarkup = function (movie) {
     const {
       backdrop_path,
       poster_path,
@@ -38,7 +67,6 @@ fetchDataFromServer(
 
     const movieDetail = document.createElement("div");
     movieDetail.classList.add("movie-detail");
-
     movieDetail.innerHTML = `
     <div class="backdrop-image" style="background-image: url('${IMAGE_BASE_URL}${
       "w1280" || "original"
@@ -106,44 +134,16 @@ fetchDataFromServer(
       </div>
     
     </div>
-  `;
-
-    for (const { key, name } of filterVideos(videos)) {
-      const videoCard = document.createElement("div");
-      videoCard.classList.add("video-card");
-      videoCard.innerHTML = `
-      <iframe width="500" height="294" src="https://www.youtube.com/embed/${key}?&theme=dark&color=white&rel=0"
-        frameborder="0" allowfullscreen="1" title="${name}" class="img-cover" loading="lazy"></iframe>
     `;
-
-      movieDetail.querySelector(".slider-inner").appendChild(videoCard);
-    }
-
     pageContent.appendChild(movieDetail);
 
-    fetchDataFromServer(
-      `${API_URL}/movie/${movieId}/recommendations?api_key=${API_KEY}&page=1`,
-      addSuggestedMovies
-    );
-  }
-);
+    movieReleatedVideos(movieDetail, videos);
+  };
+  const generateMovieDetail = function (movie) {
+    movieDetailMarkup(movie);
 
-const addSuggestedMovies = function ({ results: movieList }, title) {
-  const movieListElem = document.createElement("section");
-  movieListElem.classList.add("movie-list");
-  movieListElem.ariaLabel = "You May Also Like";
-  movieListElem.innerHTML = `
-    <div class="title-wrapper">
-      <h3 class="title-large">You May Also Like</h3>
-    </div>
-    
-    <div class="slider-list">
-      <div class="slider-inner"></div>
-    </div>
-  `;
-
-  appendToMovieList(movieListElem, movieList, "slider-inner");
-  pageContent.appendChild(movieListElem);
-};
-
-window.addEventListener("DOMContentLoaded", setIntroAnimation);
+    fetchDataFromServer(fullSuggestedApiUrl, addSuggestedMovies);
+  };
+  fetchDataFromServer(fullApiUrl, generateMovieDetail);
+}
+export default movieDetail();
