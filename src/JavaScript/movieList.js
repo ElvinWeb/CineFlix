@@ -14,7 +14,6 @@ function movieList() {
   const pageContent = document.querySelector("[page-content]");
   const genreName = window.localStorage.getItem("genreName");
   const urlParam = window.localStorage.getItem("urlParam");
-  const fullApiPath = `${API_URL}/discover/movie?api_key=${API_KEY}&sort_by=popularity.desc&include_adult=false&page=${currentPage}&${urlParam}`;
 
   const generateMovieList = function ({ results: movieList, total_pages }) {
     totalPages = total_pages;
@@ -40,16 +39,16 @@ function movieList() {
   };
   const loadHandler = function (movieListElem, btn) {
     if (currentPage >= totalPages) {
-      movieListElem.style.display = "none";
+      btn.style.display = "none";
       return;
     }
     currentPage++;
     btn.classList.add("loading");
-    fetchDataFromServer(fullPath, ({ results: movieList }) => {
+    fetchDataFromServer(`${API_URL}/discover/movie?api_key=${API_KEY}&sort_by=popularity.desc&include_adult=false&page=${currentPage}&${urlParam}`, ({ results: movieList }) => {
       btn.classList.remove("loading");
       appendToMovieList(movieListElem, movieList, "grid-list");
     });
   };
-  fetchDataFromServer(fullApiPath, generateMovieList);
+  fetchDataFromServer(`${API_URL}/discover/movie?api_key=${API_KEY}&sort_by=popularity.desc&include_adult=false&page=${currentPage}&${urlParam}`, generateMovieList);
 }
 export default movieList();

@@ -14,8 +14,9 @@ search();
 
 function index() {
   const pageContent = document.querySelector("[page-content]");
-  const fullApiPath = `${API_URL}/genre/movie/list?api_key=${API_KEY}`;
-  const fullPopularApiPath = `${API_URL}/movie/popular?api_key=${API_KEY}&page=1`;
+  const fullApiUrl = `${API_URL}/genre/movie/list?api_key=${API_KEY}`;
+  const fullPopularMovieApiUrl = `${API_URL}/movie/popular?api_key=${API_KEY}&page=1`;
+  let controlItemIndex = 0;
   const homePageSections = [
     {
       title: "Upcoming Movies",
@@ -45,15 +46,27 @@ function index() {
     banner.classList.add("banner");
     banner.ariaLabel = "Popular movies";
     banner.innerHTML = `
-    <div class="banner-slider"></div>
-    
-    <div class="slider-control">
-      <div class="control-inner"></div>
-    </div>
-  `;
+     <div class="banner-slider"></div>
+     <div class="slider-control">
+       <div class="control-inner"></div>
+     </div>
+    `;
 
-    let controlItemIndex = 0;
-    for (const [index, movie] of movieList.entries()) {
+    heroBannerMarkup(banner, movieList);
+
+    pageContent.appendChild(banner);
+    addHeroSlide();
+
+    for (const { title, path } of homePageSections) {
+      fetchDataFromServer(
+        `${API_URL}${path}?api_key=${API_KEY}&page=1`,
+        createMovieList,
+        title
+      );
+    }
+  };
+  const heroBannerMarkup = function (banner, movieList) {
+    for (const [index, movie] of Object.entries(movieList)) {
       const {
         backdrop_path,
         title,
@@ -110,17 +123,6 @@ function index() {
 
       banner.querySelector(".control-inner").appendChild(controlItem);
     }
-
-    pageContent.appendChild(banner);
-    addHeroSlide();
-
-    for (const { title, path } of homePageSections) {
-      fetchDataFromServer(
-        `${API_URL}${path}?api_key=${API_KEY}&page=1`,
-        createMovieList,
-        title
-      );
-    }
   };
   const addHeroSlide = function () {
     const sliderItems = document.querySelectorAll("[slider-item]");
@@ -164,11 +166,11 @@ function index() {
     appendToMovieList(movieListElem, movieList, "slider-inner");
     pageContent.appendChild(movieListElem);
   };
-  fetchDataFromServer(fullApiPath, function ({ genres }) {
+  fetchDataFromServer(fullApiUrl, function ({ genres }) {
     for (const { id, name } of genres) {
       genreList[id] = name;
     }
-    fetchDataFromServer(fullPopularApiPath, heroBanner);
+    fetchDataFromServer(fullPopularMovieApiUrl, heroBanner);
   });
 }
 export default index();

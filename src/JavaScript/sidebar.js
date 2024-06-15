@@ -20,7 +20,7 @@ function sidebar() {
     document.querySelectorAll("[menu-toggler]")
   );
   const overlay = document.querySelector("[overlay]");
-  const fullApiPath = `${API_URL}/genre/movie/list?api_key=${API_KEY}`;
+  const fullApiUrl = `${API_URL}/genre/movie/list?api_key=${API_KEY}`;
 
   const sidebarInner = document.createElement("div");
   sidebarInner.classList.add("sidebar-inner");
@@ -42,7 +42,6 @@ function sidebar() {
     for (const { id, name } of genres) {
       genreList[id] = name;
     }
-    console.log(genres);
     genreLink();
     langLink();
   };
@@ -80,7 +79,7 @@ function sidebar() {
     sidebarBtn.classList.toggle("active");
     overlay.classList.toggle("active");
   };
-  fetchDataFromServer(fullApiPath, getGenreList);
+  fetchDataFromServer(fullApiUrl, getGenreList);
   addEventOnElements(sidebarTogglers, "click", toggleSidebar);
 }
 export default sidebar;

@@ -19,7 +19,7 @@ function movieDetail() {
   const movieId = window.localStorage.getItem("movieId");
   const pageContent = document.querySelector("[page-content]");
   const fullApiUrl = `${API_URL}/movie/${movieId}?api_key=${API_KEY}&append_to_response=casts,videos,images,releases`;
-  const fullSuggestedApiUrl = `${API_URL}/movie/${movieId}/recommendations?api_key=${API_KEY}&page=1`;
+  const fullSuggestedMovieApiUrl = `${API_URL}/movie/${movieId}/recommendations?api_key=${API_KEY}&page=1`;
 
   const addSuggestedMovies = function ({ results: movieList }) {
     const movieListElem = document.createElement("section");
@@ -142,7 +142,7 @@ function movieDetail() {
   const generateMovieDetail = function (movie) {
     movieDetailMarkup(movie);
 
-    fetchDataFromServer(fullSuggestedApiUrl, addSuggestedMovies);
+    fetchDataFromServer(fullSuggestedMovieApiUrl, addSuggestedMovies);
   };
   fetchDataFromServer(fullApiUrl, generateMovieDetail);
 }
