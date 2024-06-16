@@ -1,4 +1,4 @@
-import { fetchDataFromServer, appendToMovieList } from "./helpers.js";
+import { fetchData, appendToMovieList } from "./helpers.js";
 import { API_KEY, API_URL } from "./config.js";
 import sidebar from "./sidebar.js";
 import search from "./search.js";
@@ -31,6 +31,7 @@ function movieList() {
   `;
     appendToMovieList(movieListElem, movieList, "grid-list");
     pageContent.appendChild(movieListElem);
+    updateIcons();
 
     const loadBtn = document.querySelector("[load-more]");
     loadBtn.addEventListener("click", () =>
@@ -44,11 +45,18 @@ function movieList() {
     }
     currentPage++;
     btn.classList.add("loading");
-    fetchDataFromServer(`${API_URL}/discover/movie?api_key=${API_KEY}&sort_by=popularity.desc&include_adult=false&page=${currentPage}&${urlParam}`, ({ results: movieList }) => {
-      btn.classList.remove("loading");
-      appendToMovieList(movieListElem, movieList, "grid-list");
-    });
+    fetchData(
+      `${API_URL}/discover/movie?api_key=${API_KEY}&sort_by=popularity.desc&include_adult=false&page=${currentPage}&${urlParam}`,
+      ({ results: movieList }) => {
+        btn.classList.remove("loading");
+        updateIcons();
+        appendToMovieList(movieListElem, movieList, "grid-list");
+      }
+    );
   };
-  fetchDataFromServer(`${API_URL}/discover/movie?api_key=${API_KEY}&sort_by=popularity.desc&include_adult=false&page=${currentPage}&${urlParam}`, generateMovieList);
+  fetchData(
+    `${API_URL}/discover/movie?api_key=${API_KEY}&sort_by=popularity.desc&include_adult=false&page=${currentPage}&${urlParam}`,
+    generateMovieList
+  );
 }
 export default movieList();

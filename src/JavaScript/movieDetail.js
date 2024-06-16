@@ -1,5 +1,5 @@
 import {
-  fetchDataFromServer,
+  fetchData,
   getCasts,
   getDirectors,
   getGenres,
@@ -35,6 +35,7 @@ function movieDetail() {
   `;
     appendToMovieList(movieListElem, movieList, "slider-inner");
     pageContent.appendChild(movieListElem);
+    updateIcons();
   };
   const movieReleatedVideos = function (movieDetail, videos) {
     for (const { key, name } of filterVideos(videos)) {
@@ -45,6 +46,7 @@ function movieDetail() {
         frameborder="0" allowfullscreen="1" title="${name}" class="img-cover" loading="lazy"></iframe>
     `;
       movieDetail.querySelector(".slider-inner").appendChild(videoCard);
+      updateIcons();
     }
   };
   const movieDetailMarkup = function (movie) {
@@ -136,14 +138,14 @@ function movieDetail() {
     </div>
     `;
     pageContent.appendChild(movieDetail);
-
+    updateIcons();
     movieReleatedVideos(movieDetail, videos);
   };
   const generateMovieDetail = function (movie) {
     movieDetailMarkup(movie);
 
-    fetchDataFromServer(fullSuggestedMovieApiUrl, addSuggestedMovies);
+    fetchData(fullSuggestedMovieApiUrl, addSuggestedMovies);
   };
-  fetchDataFromServer(fullApiUrl, generateMovieDetail);
+  fetchData(fullApiUrl, generateMovieDetail);
 }
 export default movieDetail();

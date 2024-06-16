@@ -1,5 +1,5 @@
 "use strict";
-import { addEventOnElements, fetchDataFromServer } from "./helpers.js";
+import { addEventOnElements, fetchData } from "./helpers.js";
 import { API_KEY, API_URL } from "./config.js";
 
 function sidebar() {
@@ -27,6 +27,13 @@ function sidebar() {
 
   sidebarInner.innerHTML = `
     <div class="sidebar-list">
+      <p class="title">Movie List</p>  
+
+      <a href="/pages/favorites.html" class="favorite sidebar-link" menu-close>Favorites</a>
+      <a href="/pages/watch-list.html" class="watch-list sidebar-link" menu-close>WatchList</a>
+    </div>
+
+    <div class="sidebar-list">
       <p class="title">Genres</p>  
     </div>
     
@@ -38,6 +45,7 @@ function sidebar() {
       <img src="/src/Images/tmdb-logo.png" width="130" height="17" alt="the movie database logo">
     </div>
   `;
+
   const getGenreList = function ({ genres }) {
     for (const { id, name } of genres) {
       genreList[id] = name;
@@ -56,7 +64,7 @@ function sidebar() {
         `getMovieList("with_genres=${genreId}", "${genreName}")`
       );
       link.textContent = genreName;
-      sidebarInner.querySelectorAll(".sidebar-list")[0].appendChild(link);
+      sidebarInner.querySelectorAll(".sidebar-list")[1].appendChild(link);
     }
     sidebar.appendChild(sidebarInner);
   };
@@ -70,7 +78,7 @@ function sidebar() {
         `getMovieList("with_original_language=${langId}", "${langName}")`
       );
       link.textContent = langName;
-      sidebarInner.querySelectorAll(".sidebar-list")[1].appendChild(link);
+      sidebarInner.querySelectorAll(".sidebar-list")[2].appendChild(link);
     }
     sidebar.appendChild(sidebarInner);
   };
@@ -79,7 +87,7 @@ function sidebar() {
     sidebarBtn.classList.toggle("active");
     overlay.classList.toggle("active");
   };
-  fetchDataFromServer(fullApiUrl, getGenreList);
+  fetchData(fullApiUrl, getGenreList);
   addEventOnElements(sidebarTogglers, "click", toggleSidebar);
 }
 export default sidebar;

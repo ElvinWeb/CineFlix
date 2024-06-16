@@ -1,8 +1,4 @@
-import {
-  addEventOnElements,
-  fetchDataFromServer,
-  appendToMovieList,
-} from "./helpers.js";
+import { addEventOnElements, fetchData, appendToMovieList } from "./helpers.js";
 import { IMAGE_BASE_URL, API_KEY, API_URL } from "./config.js";
 import search from "./search.js";
 import sidebar from "./sidebar.js";
@@ -58,7 +54,7 @@ function index() {
     addHeroSlide();
 
     for (const { title, path } of homePageSections) {
-      fetchDataFromServer(
+      fetchData(
         `${API_URL}${path}?api_key=${API_KEY}&page=1`,
         createMovieList,
         title
@@ -165,12 +161,13 @@ function index() {
 
     appendToMovieList(movieListElem, movieList, "slider-inner");
     pageContent.appendChild(movieListElem);
+    updateIcons();
   };
-  fetchDataFromServer(fullApiUrl, function ({ genres }) {
+  fetchData(fullApiUrl, function ({ genres }) {
     for (const { id, name } of genres) {
       genreList[id] = name;
     }
-    fetchDataFromServer(fullPopularMovieApiUrl, heroBanner);
+    fetchData(fullPopularMovieApiUrl, heroBanner);
   });
 }
 export default index();

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>CineFlix ~ Your Cinematic Companion</title>
+    <title>CineFlix // Your Cinematic Companion</title>
 
     <link
       rel="shortcut icon"
@@ -23,11 +23,10 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     />
+    <link rel="stylesheet" href="../src/StyleSheet/main.css" />
 
-    <link rel="stylesheet" href="./src/StyleSheet/main.css" />
-
-    <script src="./src/JavaScript/storage.js" defer></script>
-    <script src="./src/JavaScript/index.js" type="module"></script>
+    <script src="../src/JavaScript/storage.js" defer></script>
+    <script src="../src/JavaScript/watchList.js" type="module"></script>
   </head>
 
   <body>
@@ -38,10 +37,11 @@
       </h2>
     </div>
     <header class="header">
-      <a href="./index.html" class="logo">
+      <a href="/index.html" class="logo">
         <span class="logo-span">Cine</span>
         <span class="logo-span text-primary">Flix</span>
       </a>
+
       <div class="search" search-box>
         <div class="search-wrapper" search-wrapper>
           <input
@@ -54,7 +54,7 @@
             search-field
           />
           <img
-            src="./src/Images/search.png"
+            src="../src/Images/search.png"
             alt="search_icon"
             class="leading-icon"
             width="24"
@@ -62,36 +62,37 @@
           />
         </div>
         <button class="search-btn" search-toggler>
-          <img src="./src/Images/close.png" alt="" width="24" height="24" />
+          <img src="../src/Images/close.png" alt="" width="24" height="24" />
         </button>
       </div>
+
       <div class="search-btn" search-toggler menu-close>
-        <img src="./src/Images/search.png" alt="" width="24" height="24" />
+        <img src="../src/Images/search.png" alt="" width="24" height="24" />
       </div>
+
       <button class="menu-btn" menu-btn menu-toggler>
         <img
-          src="./src/Images/menu.png"
+          src="../src/Images/menu.png"
           alt=""
           width="24"
           height="24"
           class="menu"
         />
         <img
-          src="./src/Images/menu-close.png"
+          src="../src/Images/menu-close.png"
           alt=""
           width="24"
           height="24"
           class="close"
         />
       </button>
-      
     </header>
     <main>
       <nav class="sidebar" sidebar></nav>
 
-      <article class="container" page-content></article>
-
       <div class="overlay" overlay menu-toggler></div>
+
+      <article class="container" page-content></article>
     </main>
   </body>
 </html>

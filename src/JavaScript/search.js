@@ -1,8 +1,4 @@
-import {
-  appendToMovieList,
-  fetchDataFromServer,
-  addEventOnElements,
-} from "./helpers.js";
+import { appendToMovieList, fetchData, addEventOnElements } from "./helpers.js";
 import { API_URL, API_KEY, SEARCH_TIMEOUT_SEC } from "./config.js";
 
 function search() {
@@ -28,7 +24,7 @@ function search() {
     searchTimeout = setTimeout(setSearchTimeout, SEARCH_TIMEOUT_SEC);
   };
   const setSearchTimeout = function () {
-    fetchDataFromServer(
+    fetchData(
       `${API_URL}/search/movie?api_key=${API_KEY}&query=${searchField.value}&page=1&include_adult=false`,
       searchResults
     );
@@ -50,6 +46,7 @@ function search() {
         </div>
       `;
       appendToMovieList(searchResultModal, movieList, "grid-list");
+      updateIcons();
     } else {
       movieNotFound();
     }

@@ -1,4 +1,5 @@
 import createMovieCard from "./movieCard.js";
+import { API_KEY } from "./config.js";
 
 const addEventOnElements = function (elements, eventType, callback) {
   for (const elem of elements) elem.addEventListener(eventType, callback);
@@ -9,7 +10,7 @@ const appendToMovieList = function (movieListElem, movieList, className) {
     movieListElem.querySelector(`.${className}`).appendChild(movieListCard);
   }
 };
-const fetchDataFromServer = function (url, callback, optionalParam) {
+const fetchData = function (url, callback, optionalParam) {
   fetch(url)
     .then((response) => response.json())
     .then((data) => callback(data, optionalParam))
@@ -67,11 +68,31 @@ const hideElement = function (element, delay) {
     element.style.top = "-100vh";
   }, delay);
 };
+const ApiUrls = {
+  genreList: `https://api.themoviedb.org/3/genre/movie/list?`,
+  popular: `https://api.themoviedb.org/3/movie/popular?`,
+  topRated: `https://api.themoviedb.org/3/movie/top_rated?`,
+  upcoming: `https://api.themoviedb.org/3/movie/upcoming?`,
+  trending: `https://api.themoviedb.org/3/trending/movie/week?`,
+  genre: `https://api.themoviedb.org/3/genre/movie/list?`,
+  recommendations(id) {
+    return `https://api.themoviedb.org/3/movie/${id}/recommendations?page=1`;
+  },
+  discover(urlParam, currentPage) {
+    return `https://api.themoviedb.org/3/discover/movie?&page=${currentPage}&${urlParam}`;
+  },
+  detail(id) {
+    return `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&append_to_response=casts,videos,images,releases`;
+  },
+  search(query) {
+    return `https://api.themoviedb.org/3/search/movie?query=${query}`;
+  },
+};
 
 export {
   addEventOnElements,
   appendToMovieList,
-  fetchDataFromServer,
+  fetchData,
   getCasts,
   getGenres,
   getDirectors,
@@ -79,4 +100,5 @@ export {
   animateSpans,
   removeAndAddClass,
   hideElement,
+  ApiUrls,
 };
