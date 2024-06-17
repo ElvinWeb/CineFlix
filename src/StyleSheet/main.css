@@ -23,6 +23,12 @@
   letter-spacing: 0.5px;
 }
 
+.header .icons .icon-btn, .search-btn {
+  background-color: hsl(250, 6%, 20%);
+  border-radius: 8px;
+  padding: 12px;
+}
+
 *,
 *::before,
 *::after {
@@ -246,7 +252,7 @@ body {
   background-size: 20px;
   filter: drop-shadow();
 }
-.movie-card:hover .icons {
+.movie-card:hover .icons, .movie-card:checked .icons {
   transition: 250ms ease;
   opacity: 1;
 }
@@ -280,32 +286,21 @@ body {
   background-image: url("/src/Images/love-fill.png");
 }
 
-.search-btn,
 .menu-btn {
   padding: 12px;
 }
 @media only screen and (min-width: 1200px) {
-  .search-btn,
   .menu-btn {
     display: none;
   }
 }
 
-.search-btn {
-  background-color: hsl(250, 6%, 20%);
-  border-radius: 8px;
-}
 .search-btn img {
   opacity: 0.5;
   transition: 250ms ease;
 }
 .search-btn:is(:hover, :focus-visible) img {
   opacity: 1;
-}
-@media only screen and (min-width: 768px) {
-  .search-btn {
-    display: none;
-  }
 }
 
 .btn {
@@ -341,11 +336,11 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 }
 @media only screen and (min-width: 1200px) {
   .header {
-    padding: 28px 56px;
+    padding: 28px 55px;
   }
 }
 .header .logo {
@@ -360,6 +355,19 @@ body {
   .header .logo {
     font-size: 4.2rem;
   }
+}
+.header .icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.header .icons .icon-btn img {
+  opacity: 0.5;
+  transition: 250ms ease;
+}
+.header .icons .icon-btn:is(:hover, :focus-visible) img {
+  opacity: 1;
 }
 .header .menu-btn.active .menu,
 .header .menu-btn .close {
@@ -381,13 +389,6 @@ body {
   gap: 8px;
   z-index: 1;
   display: none;
-}
-@media only screen and (min-width: 768px) {
-  .header .search {
-    all: unset;
-    display: block;
-    width: 360px;
-  }
 }
 .header .search.active {
   display: flex;

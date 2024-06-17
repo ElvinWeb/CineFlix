@@ -4,10 +4,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
 
     @include breakpoint("desktop") {
-        padding: 28px 56px;
+        padding: 28px 55px;
     }
 
     .logo {
@@ -21,6 +21,27 @@
         @media only screen and (max-width: 1200px) {
             font-size: $fs-heading-lg;
         }
+    }
+
+    .icons {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+
+        .icon-btn {
+            @extend %icon-btn-bg;
+
+            img {
+                opacity: 0.5;
+                transition: $transition-short;
+            }
+
+            &:is(:hover, :focus-visible) img {
+                opacity: 1;
+            }
+        }
+
     }
 
     .menu-btn.active .menu,
@@ -46,11 +67,6 @@
         z-index: 1;
         display: none;
 
-        @include breakpoint("tablet") {
-            all: unset;
-            display: block;
-            width: 360px;
-        }
 
         &.active {
             display: flex;

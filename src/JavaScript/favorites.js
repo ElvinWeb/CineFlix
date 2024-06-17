@@ -14,11 +14,11 @@ console.log(favorites);
 if (favorites) {
   const favoritesIds = favorites.split(",");
   pageContent.innerHTML = `
-        <h1 class="heading">My Favorite Movies</h1>
-        <div class="movie-list">
-            <div class="grid-list"></div>
-        </div>
-    `;
+      <h1 class="heading">My Favorite Movies</h1>
+      <div class="movie-list">
+          <div class="grid-list"></div>
+      </div>
+  `;
   favoritesIds.forEach((id) => {
     if (parseInt(id) > 0) {
       fetchData(ApiUrls.detail(parseInt(id)), (movie) => {
@@ -26,7 +26,7 @@ if (favorites) {
         pageContent.querySelector(".grid-list").appendChild(movieCard);
         updateIcons();
         let favoriteBtn = document.querySelectorAll(".favorites");
-        addEventOnElements(favoriteBtn, eventType, (event) => {
+        addEventOnElements(favoriteBtn, "click", (event) => {
           event.currentTarget.parentNode.parentNode.parentNode.remove();
         });
       });

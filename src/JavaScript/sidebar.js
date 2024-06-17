@@ -27,13 +27,6 @@ function sidebar() {
 
   sidebarInner.innerHTML = `
     <div class="sidebar-list">
-      <p class="title">Movie List</p>  
-
-      <a href="/pages/favorites.html" class="favorite sidebar-link" menu-close>Favorites</a>
-      <a href="/pages/watch-list.html" class="watch-list sidebar-link" menu-close>WatchList</a>
-    </div>
-
-    <div class="sidebar-list">
       <p class="title">Genres</p>  
     </div>
     
@@ -64,7 +57,7 @@ function sidebar() {
         `getMovieList("with_genres=${genreId}", "${genreName}")`
       );
       link.textContent = genreName;
-      sidebarInner.querySelectorAll(".sidebar-list")[1].appendChild(link);
+      sidebarInner.querySelectorAll(".sidebar-list")[0].appendChild(link);
     }
     sidebar.appendChild(sidebarInner);
   };
@@ -78,7 +71,7 @@ function sidebar() {
         `getMovieList("with_original_language=${langId}", "${langName}")`
       );
       link.textContent = langName;
-      sidebarInner.querySelectorAll(".sidebar-list")[2].appendChild(link);
+      sidebarInner.querySelectorAll(".sidebar-list")[1].appendChild(link);
     }
     sidebar.appendChild(sidebarInner);
   };

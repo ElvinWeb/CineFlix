@@ -1,4 +1,3 @@
-.search-btn,
 .menu-btn {
     padding: 12px;
 
@@ -8,8 +7,7 @@
 }
 
 .search-btn {
-    background-color: $banner-background;
-    border-radius: $radius-8;
+    @extend %icon-btn-bg;
 
     img {
         opacity: 0.5;
@@ -18,10 +16,6 @@
 
     &:is(:hover, :focus-visible) img {
         opacity: 1;
-    }
-
-    @include breakpoint("tablet") {
-        display: none;
     }
 }
 

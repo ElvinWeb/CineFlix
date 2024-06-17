@@ -5,7 +5,6 @@ const getMovieList = function (urlParam, genreName) {
   window.localStorage.setItem("urlParam", urlParam);
   window.localStorage.setItem("genreName", genreName);
 };
-
 function removeFromLocalStroage(key, id) {
   let watchLaterArr = window.localStorage.getItem(key).split(",");
   const index = watchLaterArr.indexOf(`${id}`);
@@ -18,31 +17,31 @@ function addToLocalStroage(key, id) {
   let existBefore = window.localStorage.getItem(key);
   window.localStorage.setItem(key, `${existBefore || ""}${id},`);
 }
-function listToggle(ele) {
-  ele.classList.toggle("added");
+function listToggle(element) {
+  element.classList.toggle("added");
 }
-function watchList(ele, id) {
+function watchList(element, id) {
   const key = "watchlist";
   if (!window.localStorage.getItem(key)) window.localStorage.setItem(key, "");
   const watchList = window.localStorage.getItem(key).split(",");
   if (watchList.includes(`${id}`)) {
     removeFromLocalStroage(key, id);
-    listToggle(ele);
+    listToggle(element);
   } else {
     addToLocalStroage(key, id);
-    listToggle(ele);
+    listToggle(element);
   }
 }
-function favorites(ele, id) {
+function favorites(element, id) {
   const key = "favorites";
   if (!window.localStorage.getItem(key)) window.localStorage.setItem(key, "");
   const watchList = window.localStorage.getItem(key).split(",");
   if (watchList.includes(`${id}`)) {
     removeFromLocalStroage(key, id);
-    listToggle(ele);
+    listToggle(element);
   } else {
     addToLocalStroage(key, id);
-    listToggle(ele);
+    listToggle(element);
   }
 }
 function updateIcons() {

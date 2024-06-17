@@ -22,3 +22,9 @@
     font-weight: $weight-bold;
     letter-spacing: 0.5px;
 }
+
+%icon-btn-bg {
+    background-color: $banner-background;
+    border-radius: $radius-8;
+    padding: 12px;
+}

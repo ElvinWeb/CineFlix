@@ -64,7 +64,8 @@
 
     }
 
-    &:hover .icons {
+    &:hover .icons,
+    &:checked .icons {
         transition: $transition-short;
         opacity: 1;
     }
