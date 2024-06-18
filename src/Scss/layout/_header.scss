@@ -21,33 +21,25 @@
         @media only screen and (max-width: 1200px) {
             font-size: $fs-heading-lg;
         }
+
+        @media only screen and (max-width: 564px) {
+            font-size: 3.5rem;
+        }
     }
+
 
     .icons {
         display: flex;
         align-items: center;
         justify-content: center;
         gap: 10px;
-
-        .icon-btn {
-            @extend %icon-btn-bg;
-
-            img {
-                opacity: 0.5;
-                transition: $transition-short;
-            }
-
-            &:is(:hover, :focus-visible) img {
-                opacity: 1;
-            }
-        }
-
     }
 
     .menu-btn.active .menu,
     .menu-btn .close {
         display: none;
     }
+
 
     .menu-btn .menu,
     .menu-btn.active .close {

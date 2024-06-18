@@ -23,7 +23,7 @@
   letter-spacing: 0.5px;
 }
 
-.header .icons .icon-btn, .search-btn {
+.icon-btn, .search-btn, .menu-btn {
   background-color: hsl(250, 6%, 20%);
   border-radius: 8px;
   padding: 12px;
@@ -286,20 +286,55 @@ body {
   background-image: url("/src/Images/love-fill.png");
 }
 
-.menu-btn {
-  padding: 12px;
-}
 @media only screen and (min-width: 1200px) {
   .menu-btn {
     display: none;
   }
 }
+.menu-btn img {
+  width: 24px;
+  height: 24px;
+}
+@media only screen and (max-width: 564px) {
+  .menu-btn img {
+    width: 19px;
+    height: 19px;
+  }
+}
 
+.search-btn {
+  padding: 10px;
+  cursor: pointer;
+}
 .search-btn img {
   opacity: 0.5;
   transition: 250ms ease;
+  width: 28px;
+  height: 28px;
+}
+@media only screen and (max-width: 564px) {
+  .search-btn img {
+    width: 23px;
+    height: 23px;
+  }
 }
 .search-btn:is(:hover, :focus-visible) img {
+  opacity: 1;
+}
+
+.icon-btn img {
+  opacity: 0.5;
+  transition: 250ms ease;
+  width: 24px;
+  height: 24px;
+}
+@media only screen and (max-width: 564px) {
+  .icon-btn img {
+    width: 19px;
+    height: 19px;
+  }
+}
+.icon-btn:is(:hover, :focus-visible) img {
   opacity: 1;
 }
 
@@ -356,18 +391,16 @@ body {
     font-size: 4.2rem;
   }
 }
+@media only screen and (max-width: 564px) {
+  .header .logo {
+    font-size: 3.5rem;
+  }
+}
 .header .icons {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
-}
-.header .icons .icon-btn img {
-  opacity: 0.5;
-  transition: 250ms ease;
-}
-.header .icons .icon-btn:is(:hover, :focus-visible) img {
-  opacity: 1;
 }
 .header .menu-btn.active .menu,
 .header .menu-btn .close {
