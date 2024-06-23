@@ -1,5 +1,10 @@
-import { addEventOnElements, fetchData, appendToMovieList } from "./helpers.js";
-import { IMAGE_BASE_URL, API_KEY, API_URL } from "./config.js";
+import {
+  addEventOnElements,
+  fetchData,
+  appendToMovieList,
+  ApiUrls,
+} from "./helpers.js";
+import { IMAGE_BASE_URL } from "./config.js";
 import search from "./search.js";
 import sidebar from "./sidebar.js";
 import intro from "./intro.js";
@@ -10,21 +15,19 @@ search();
 
 function index() {
   const pageContent = document.querySelector("[page-content]");
-  const fullApiUrl = `${API_URL}/genre/movie/list?api_key=${API_KEY}`;
-  const fullPopularMovieApiUrl = `${API_URL}/movie/popular?api_key=${API_KEY}&page=1`;
   let controlItemIndex = 0;
   const homePageSections = [
     {
       title: "Upcoming Movies",
-      path: "/movie/upcoming",
+      url: ApiUrls.upcoming,
     },
     {
       title: "Weekly Trending Movies",
-      path: "/trending/movie/week",
+      url: ApiUrls.trending,
     },
     {
       title: "Top Rated Movies",
-      path: "/movie/top_rated",
+      url: ApiUrls.topRated,
     },
   ];
   const genreList = {
@@ -53,12 +56,8 @@ function index() {
     pageContent.appendChild(banner);
     addHeroSlide();
 
-    for (const { title, path } of homePageSections) {
-      fetchData(
-        `${API_URL}${path}?api_key=${API_KEY}&page=1`,
-        createMovieList,
-        title
-      );
+    for (const { title, url } of homePageSections) {
+      fetchData(url, createMovieList, title);
     }
   };
   const heroBannerMarkup = function (banner, movieList) {
@@ -163,11 +162,11 @@ function index() {
     pageContent.appendChild(movieListElem);
     updateIcons();
   };
-  fetchData(fullApiUrl, function ({ genres }) {
+  fetchData(ApiUrls.genreList, function ({ genres }) {
     for (const { id, name } of genres) {
       genreList[id] = name;
     }
-    fetchData(fullPopularMovieApiUrl, heroBanner);
+    fetchData(ApiUrls.popular, heroBanner);
   });
 }
 export default index();

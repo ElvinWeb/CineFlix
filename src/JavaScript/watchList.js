@@ -9,36 +9,43 @@ sidebar();
 
 const watchlist = localStorage.getItem("watchlist");
 const pageContent = document.querySelector("[page-content]");
+const movieListElem = document.createElement("section");
+movieListElem.classList.add("movie-list", "genre-list");
 
 if (watchlist) {
   const watchlistIds = watchlist.split(",");
-  pageContent.innerHTML = `
-        <h1 class="heading">My watchlist</h1>
-        <div class="movie-list">
-            <div class="grid-list"></div>
-        </div>
-    `;
+  movieListElem.innerHTML = `
+      <div class="title-wrapper">
+        <h1 class="heading">My Watchlist</h1>
+      </div>
+      <div class="grid-list"></div>
+  `;
   watchlistIds.forEach((id) => {
     if (parseInt(id) > 0) {
       fetchData(ApiUrls.detail(parseInt(id)), (movie) => {
         const movieCard = createMovieCard(movie);
-        pageContent.querySelector(".grid-list").appendChild(movieCard);
-        updateIcons();
+        movieListElem.querySelector(".grid-list").appendChild(movieCard);
         let watchlistBtn = document.querySelectorAll(".watchlist");
-        addEventOnElements(watchlistBtn, eventType, (event) => {
+        updateIcons();
+        addEventOnElements(watchlistBtn, "click", (event) => {
           event.currentTarget.parentNode.parentNode.parentNode.remove();
         });
       });
     }
   });
+  pageContent.appendChild(movieListElem);
 } else {
   pageContent.innerHTML = `
-    <h3 class="heading">Ready to plan your movie marathon?</h3>
-    <div style="margin-top:20px">
-        <p>Your watchlist is currently empty. To start curating your personalized movie queue,
-        explore our movies and click on save icon <img src="/src/Images/watch-later-stroke.png" style="display:inline" alt="favorite" width=15 heigth 15>.
-        That way, you'll never miss out on the films you're excited to watch.
-        Let's begin adding to your watchlist!</p>
+    <div class="title-wrapper">
+      <h1 class="heading">Ready to plan your movie marathon?</h1>
+    </div>
+    <div class="content">
+        <p>
+          Your watchlist is currently empty. To start curating your personalized movie queue,
+          explore our movie collection and click on save icon <img src="/src/Images/watch-later-stroke.png" style="display:inline" alt="favorite" width=15 heigth 15>.
+          That way, you will never miss out on the films you are excited to watch.
+          Let's begin adding to your watchlist🚀
+        </p>
     </div>
   `;
 }

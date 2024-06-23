@@ -1,6 +1,5 @@
 "use strict";
-import { addEventOnElements, fetchData } from "./helpers.js";
-import { API_KEY, API_URL } from "./config.js";
+import { ApiUrls, addEventOnElements, fetchData } from "./helpers.js";
 
 function sidebar() {
   const genreList = {};
@@ -20,7 +19,6 @@ function sidebar() {
     document.querySelectorAll("[menu-toggler]")
   );
   const overlay = document.querySelector("[overlay]");
-  const fullApiUrl = `${API_URL}/genre/movie/list?api_key=${API_KEY}`;
 
   const sidebarInner = document.createElement("div");
   sidebarInner.classList.add("sidebar-inner");
@@ -80,7 +78,7 @@ function sidebar() {
     sidebarBtn.classList.toggle("active");
     overlay.classList.toggle("active");
   };
-  fetchData(fullApiUrl, getGenreList);
+  fetchData(ApiUrls.genreList, getGenreList);
   addEventOnElements(sidebarTogglers, "click", toggleSidebar);
 }
 export default sidebar;

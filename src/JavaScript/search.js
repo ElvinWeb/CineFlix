@@ -1,5 +1,10 @@
-import { appendToMovieList, fetchData, addEventOnElements } from "./helpers.js";
-import { API_URL, API_KEY, SEARCH_TIMEOUT_SEC } from "./config.js";
+import {
+  appendToMovieList,
+  fetchData,
+  addEventOnElements,
+  ApiUrls,
+} from "./helpers.js";
+import { SEARCH_TIMEOUT_SEC } from "./config.js";
 
 function search() {
   const searchWrapper = document.querySelector("[search-wrapper]");
@@ -24,10 +29,7 @@ function search() {
     searchTimeout = setTimeout(setSearchTimeout, SEARCH_TIMEOUT_SEC);
   };
   const setSearchTimeout = function () {
-    fetchData(
-      `${API_URL}/search/movie?api_key=${API_KEY}&query=${searchField.value}&page=1&include_adult=false`,
-      searchResults
-    );
+    fetchData(ApiUrls.search(searchField.value), searchResults);
   };
   const searchResults = function ({ results: movieList }) {
     searchWrapper.classList.remove("searching");

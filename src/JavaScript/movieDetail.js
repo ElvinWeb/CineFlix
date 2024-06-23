@@ -5,8 +5,9 @@ import {
   getGenres,
   filterVideos,
   appendToMovieList,
+  ApiUrls,
 } from "./helpers.js";
-import { API_KEY, API_URL, IMAGE_BASE_URL } from "./config.js";
+import { IMAGE_BASE_URL } from "./config.js";
 import sidebar from "./sidebar.js";
 import search from "./search.js";
 import intro from "./intro.js";
@@ -18,8 +19,6 @@ search();
 function movieDetail() {
   const movieId = window.localStorage.getItem("movieId");
   const pageContent = document.querySelector("[page-content]");
-  const fullApiUrl = `${API_URL}/movie/${movieId}?api_key=${API_KEY}&append_to_response=casts,videos,images,releases`;
-  const fullSuggestedMovieApiUrl = `${API_URL}/movie/${movieId}/recommendations?api_key=${API_KEY}&page=1`;
 
   const addSuggestedMovies = function ({ results: movieList }) {
     const movieListElem = document.createElement("section");
@@ -51,6 +50,7 @@ function movieDetail() {
   };
   const movieDetailMarkup = function (movie) {
     const {
+      id,
       backdrop_path,
       poster_path,
       title,
@@ -74,7 +74,15 @@ function movieDetail() {
       "w1280" || "original"
     }${backdrop_path || poster_path}')"></div>
     
-    <figure class="poster-box movie-poster">
+    <figure class="poster-box movie-poster movie-card" movie-id=${id}>
+      <div class="icons">
+        <span class="icon">
+          <span class="favorites" onclick=favorites(this,${id})></span>
+        </span>
+        <span class="icon">
+          <span class="watchlist" onclick=watchList(this,${id})></span>
+        </span>
+      </div>
       <img src="${IMAGE_BASE_URL}w342${poster_path}" alt="${title} poster" class="img-cover">
     </figure>
     
@@ -144,8 +152,8 @@ function movieDetail() {
   const generateMovieDetail = function (movie) {
     movieDetailMarkup(movie);
 
-    fetchData(fullSuggestedMovieApiUrl, addSuggestedMovies);
+    fetchData(ApiUrls.recommendations(movieId), addSuggestedMovies);
   };
-  fetchData(fullApiUrl, generateMovieDetail);
+  fetchData(ApiUrls.detail(movieId), generateMovieDetail);
 }
 export default movieDetail();

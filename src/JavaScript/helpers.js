@@ -1,5 +1,5 @@
 import createMovieCard from "./movieCard.js";
-import { API_KEY } from "./config.js";
+import { API_KEY, API_URL } from "./config.js";
 
 const addEventOnElements = function (elements, eventType, callback) {
   for (const elem of elements) elem.addEventListener(eventType, callback);
@@ -69,23 +69,22 @@ const hideElement = function (element, delay) {
   }, delay);
 };
 const ApiUrls = {
-  genreList: `https://api.themoviedb.org/3/genre/movie/list?`,
-  popular: `https://api.themoviedb.org/3/movie/popular?`,
-  topRated: `https://api.themoviedb.org/3/movie/top_rated?`,
-  upcoming: `https://api.themoviedb.org/3/movie/upcoming?`,
-  trending: `https://api.themoviedb.org/3/trending/movie/week?`,
-  genre: `https://api.themoviedb.org/3/genre/movie/list?`,
+  genreList: `${API_URL}/genre/movie/list?api_key=${API_KEY}`,
+  popular: `${API_URL}/movie/popular?api_key=${API_KEY}&page=1`,
+  topRated: `${API_URL}/movie/top_rated?api_key=${API_KEY}&page=1`,
+  upcoming: `${API_URL}/movie/upcoming?api_key=${API_KEY}&page=1`,
+  trending: `${API_URL}/trending/movie/week?api_key=${API_KEY}&page=1`,
   recommendations(id) {
-    return `https://api.themoviedb.org/3/movie/${id}/recommendations?page=1`;
+    return `${API_URL}/movie/${id}/recommendations?api_key=${API_KEY}&page=1`;
   },
   discover(urlParam, currentPage) {
-    return `https://api.themoviedb.org/3/discover/movie?&page=${currentPage}&${urlParam}`;
+    return `${API_URL}/discover/movie?api_key=${API_KEY}&sort_by=popularity.desc&include_adult=false&page=${currentPage}&${urlParam}`;
   },
   detail(id) {
-    return `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&append_to_response=casts,videos,images,releases`;
+    return `${API_URL}/movie/${id}?api_key=${API_KEY}&append_to_response=casts,videos,images,releases`;
   },
   search(query) {
-    return `https://api.themoviedb.org/3/search/movie?query=${query}`;
+    return `${API_URL}/search/movie?api_key=${API_KEY}&query=${query}&page=1&include_adult=false`;
   },
 };
 

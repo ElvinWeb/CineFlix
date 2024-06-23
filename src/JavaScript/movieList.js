@@ -1,5 +1,4 @@
-import { fetchData, appendToMovieList } from "./helpers.js";
-import { API_KEY, API_URL } from "./config.js";
+import { fetchData, appendToMovieList, ApiUrls } from "./helpers.js";
 import sidebar from "./sidebar.js";
 import search from "./search.js";
 import intro from "./intro.js";
@@ -46,7 +45,7 @@ function movieList() {
     currentPage++;
     btn.classList.add("loading");
     fetchData(
-      `${API_URL}/discover/movie?api_key=${API_KEY}&sort_by=popularity.desc&include_adult=false&page=${currentPage}&${urlParam}`,
+      ApiUrls.discover(urlParam, currentPage),
       ({ results: movieList }) => {
         btn.classList.remove("loading");
         updateIcons();
@@ -54,9 +53,6 @@ function movieList() {
       }
     );
   };
-  fetchData(
-    `${API_URL}/discover/movie?api_key=${API_KEY}&sort_by=popularity.desc&include_adult=false&page=${currentPage}&${urlParam}`,
-    generateMovieList
-  );
+  fetchData(ApiUrls.discover(urlParam, currentPage), generateMovieList);
 }
 export default movieList();

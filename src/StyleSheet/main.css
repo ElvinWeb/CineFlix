@@ -121,6 +121,12 @@ body {
   font-size: 2rem;
 }
 
+.content {
+  font-size: 23px;
+  margin-top: 30px;
+  max-width: 100%;
+}
+
 .heading {
   color: hsl(0, 0%, 100%);
   font-size: 4rem;
