@@ -1,13 +1,13 @@
 .header {
     position: relative;
-    padding: 25px 20px;
+    padding: 25px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 10px;
+    gap: 20px;
 
     @include breakpoint("desktop") {
-        padding: 28px 55px;
+        padding: 25px 55px;
     }
 
     .logo {
@@ -15,14 +15,14 @@
         align-items: center;
         justify-content: center;
         margin-inline-end: auto;
-        font-size: $fs-heading;
+        font-size: 4.8rem;
         font-weight: 700;
 
         @media only screen and (max-width: 1200px) {
-            font-size: $fs-heading-lg;
+            font-size: 4.2rem;
         }
 
-        @media only screen and (max-width: 564px) {
+        @media only screen and (max-width: 576px) {
             font-size: 3.5rem;
         }
     }
@@ -32,7 +32,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 10px;
+        gap: 11px;
     }
 
     .menu-btn.active .menu,

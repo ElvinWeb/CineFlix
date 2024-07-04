@@ -1,11 +1,11 @@
 .sidebar {
     position: absolute;
     background-color: $background;
-    top: 96px;
+    top: 113px;
     bottom: 0;
     left: -340px;
     max-width: 340px;
-    width: 100%;
+    width: 70%;
     border-block-start: 1px solid $banner-background;
     overflow-y: overlay;
     z-index: 4;
@@ -17,6 +17,10 @@
         visibility: visible;
         border-block-start: 0;
         height: calc(100vh - 104px);
+    }
+
+    @media only screen and (max-width: 576px) {
+        top: 103px;
     }
 
     &.active {

@@ -8,39 +8,34 @@
     background-color: $background;
     transition: all 1s;
 
-    &-logo--pos {
+    &-logo {
         position: absolute;
-        top: 40%;
+        top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-    }
-
-    &-logo {
+        font-size: 8rem;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: $fs-heading-xll;
+    }
 
+    .logo-span {
+        position: relative;
+        display: inline-block;
+        bottom: -20px;
+        opacity: 0;
 
-        .logo-span {
-            position: relative;
-            display: inline-block;
-            bottom: -20px;
-            opacity: 0;
-
-            &.active {
-                bottom: 0;
-                opacity: 1;
-                transition: ease-in-out 0.5s;
-            }
-
-            &.fade {
-                bottom: 150px;
-                opacity: 0;
-                transition: ease-in-out 0.4s;
-            }
+        &.active {
+            bottom: 0;
+            opacity: 1;
+            transition: ease-in-out 0.5s;
         }
 
+        &.fade {
+            bottom: 250px;
+            opacity: 0;
+            transition: ease-in-out 0.5s;
+        }
     }
 
 }

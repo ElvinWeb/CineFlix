@@ -1,26 +1,25 @@
-import {
-  INITIAL_ANIMATION_STEP,
-  REMOVE_ADDANIMATION_DELAY,
-  REMOVE_ADDANIMATION_STEP,
-  HIDE_INTRO_DELAY,
-} from "./config.js";
-import { animateSpans, hideElement, removeAndAddClass } from "./helpers.js";
+import { HIDE_INTRO_DELAY, REMOVE_FADEANIMATION_DELAY } from "./config.js";
+import { hideIntroOverlay, addActiveClass, addFadeClass } from "./helpers.js";
 
 function intro() {
   const intro = document.querySelector(".intro");
-  const logoSpan = document.querySelectorAll(".logo-span");
+  const logoSpans = document.querySelectorAll(".logo-span");
 
   const setIntroAnimation = function () {
     setTimeout(() => {
-      animateSpans(logoSpan, INITIAL_ANIMATION_STEP);
-      removeAndAddClass(
-        logoSpan,
-        REMOVE_ADDANIMATION_DELAY,
-        REMOVE_ADDANIMATION_STEP
-      );
-      hideElement(intro, HIDE_INTRO_DELAY);
+      addActiveClass(logoSpans);
+
+      setTimeout(() => {
+        addFadeClass(logoSpans);
+      }, REMOVE_FADEANIMATION_DELAY);
+
+      setTimeout(() => {
+        hideIntroOverlay(intro);
+      }, HIDE_INTRO_DELAY);
     });
   };
+
   window.addEventListener("DOMContentLoaded", setIntroAnimation);
 }
+
 export default intro;

@@ -1,5 +1,10 @@
 import createMovieCard from "./movieCard.js";
-import { API_KEY, API_URL } from "./config.js";
+import {
+  API_KEY,
+  API_URL,
+  INITIAL_ANIMATION_STEP,
+  ADD_FADEANIMATION_STEP,
+} from "./config.js";
 
 const addEventOnElements = function (elements, eventType, callback) {
   for (const elem of elements) elem.addEventListener(eventType, callback);
@@ -46,27 +51,23 @@ const filterVideos = function (videoList) {
       (type === "Trailer" || type === "Teaser") && site === "YouTube"
   );
 };
-const animateSpans = function (spans, step) {
-  spans.forEach((span, i) => {
+const addActiveClass = function (spans) {
+  spans.forEach((span, index) => {
     setTimeout(() => {
       span.classList.add("active");
-    }, (i + 1) * step);
+    }, (index + 1) * INITIAL_ANIMATION_STEP);
   });
 };
-const removeAndAddClass = function (spans, delay, step) {
-  setTimeout(() => {
-    spans.forEach((span, i) => {
-      setTimeout(() => {
-        span.classList.remove("active");
-        span.classList.add("fade");
-      }, (i + 1) * step);
-    });
-  }, delay);
+const addFadeClass = function (spans) {
+  spans.forEach((span, index) => {
+    setTimeout(() => {
+      span.classList.remove("active");
+      span.classList.add("fade");
+    }, (index + 1) * ADD_FADEANIMATION_STEP);
+  });
 };
-const hideElement = function (element, delay) {
-  setTimeout(() => {
-    element.style.top = "-100vh";
-  }, delay);
+const hideIntroOverlay = function (introElement) {
+  introElement.style.top = "-100vh";
 };
 const ApiUrls = {
   genreList: `${API_URL}/genre/movie/list?api_key=${API_KEY}`,
@@ -96,8 +97,8 @@ export {
   getGenres,
   getDirectors,
   filterVideos,
-  animateSpans,
-  removeAndAddClass,
-  hideElement,
+  addActiveClass,
+  addFadeClass,
+  hideIntroOverlay,
   ApiUrls,
 };
