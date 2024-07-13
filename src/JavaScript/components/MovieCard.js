@@ -1,4 +1,4 @@
-import { IMAGE_BASE_URL } from "./config.js";
+import { IMAGE_BASE_URL } from "../config.js";
 
 function createMovieCard(movie) {
   const { poster_path, title, vote_average, release_date, id } = movie;

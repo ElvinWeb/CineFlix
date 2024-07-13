@@ -1,11 +1,11 @@
 .sidebar {
     position: absolute;
     background-color: $background;
-    top: 113px;
+    top: 103px;
     bottom: 0;
     left: -340px;
     max-width: 340px;
-    width: 70%;
+    width: 100%;
     border-block-start: 1px solid $banner-background;
     overflow-y: overlay;
     z-index: 4;
@@ -18,9 +18,10 @@
         border-block-start: 0;
         height: calc(100vh - 104px);
     }
-
-    @media only screen and (max-width: 576px) {
-        top: 103px;
+    
+    @media screen and (max-width: 576px) {
+        width: 60%;
+        top: 94px;
     }
 
     &.active {
@@ -64,11 +65,7 @@
         transition: $transition-short;
 
         &:is(:hover, :focus-visible) {
-            color: $light-azure;
-        }
-
-        &.active-link {
-            color: $light-azure !important;
+            color: $on-background;
         }
     }
 

@@ -3,8 +3,8 @@ import {
   fetchData,
   addEventOnElements,
   ApiUrls,
-} from "./helpers.js";
-import { SEARCH_TIMEOUT_SEC } from "./config.js";
+} from "../helpers.js";
+import { SEARCH_TIMEOUT_SEC } from "../config.js";
 
 function search() {
   const searchWrapper = document.querySelector("[search-wrapper]");

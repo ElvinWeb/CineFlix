@@ -1,5 +1,5 @@
-import { HIDE_INTRO_DELAY, REMOVE_FADEANIMATION_DELAY } from "./config.js";
-import { hideIntroOverlay, addActiveClass, addFadeClass } from "./helpers.js";
+import { HIDE_INTRO_DELAY, REMOVE_FADEANIMATION_DELAY } from "../config.js";
+import { hideIntroOverlay, addActiveClass, addFadeClass } from "../helpers.js";
 
 function intro() {
   const intro = document.querySelector(".intro");

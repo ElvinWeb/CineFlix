@@ -6,11 +6,11 @@ import {
   filterVideos,
   appendToMovieList,
   ApiUrls,
-} from "./helpers.js";
-import { IMAGE_BASE_URL } from "./config.js";
-import sidebar from "./sidebar.js";
-import search from "./search.js";
-import intro from "./intro.js";
+} from "../helpers.js";
+import { IMAGE_BASE_URL } from "../config.js";
+import sidebar from "./Sidebar.js";
+import search from "./Search.js";
+import intro from "./Intro.js";
 
 intro();
 sidebar();
@@ -65,7 +65,7 @@ function movieDetail() {
       casts: { cast, crew },
       videos: { results: videos },
     } = movie;
-    document.title = `CineFlix ~ ${title}`;
+    document.title = `CineFlix | ${title}`;
 
     const movieDetail = document.createElement("div");
     movieDetail.classList.add("movie-detail");

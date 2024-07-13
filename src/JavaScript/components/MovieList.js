@@ -1,7 +1,7 @@
-import { fetchData, appendToMovieList, ApiUrls } from "./helpers.js";
-import sidebar from "./sidebar.js";
-import search from "./search.js";
-import intro from "./intro.js";
+import { fetchData, appendToMovieList, ApiUrls } from "../helpers.js";
+import sidebar from "./Sidebar.js";
+import search from "./Search.js";
+import intro from "./Intro.js";
 
 intro();
 sidebar();
@@ -16,7 +16,7 @@ function movieList() {
 
   const generateMovieList = function ({ results: movieList, total_pages }) {
     totalPages = total_pages;
-    document.title = `CineFlix ~ ${genreName} Movies`;
+    document.title = `CineFlix | ${genreName} Movies`;
     const movieListElem = document.createElement("section");
     movieListElem.classList.add("movie-list", "genre-list");
     movieListElem.ariaLabel = `${genreName} Movies`;

@@ -1,13 +1,13 @@
 .header {
     position: relative;
-    padding: 25px;
+    padding: 20px 25px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 20px;
 
     @include breakpoint("desktop") {
-        padding: 25px 55px;
+        padding: 20px 55px;
     }
 
     .logo {
@@ -23,7 +23,7 @@
         }
 
         @media only screen and (max-width: 576px) {
-            font-size: 3.5rem;
+            font-size: 3.6rem;
         }
     }
 

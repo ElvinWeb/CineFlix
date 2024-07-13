@@ -224,9 +224,6 @@ body {
 .movie-card .meta-list {
   justify-content: space-between;
 }
-.movie-card:hover .title, .movie-card:checked .title {
-  color: hsl(214, 84%, 56%);
-}
 .movie-card .img-cover,
 .movie-card .title {
   transition: all 0.3s ease;
@@ -391,7 +388,7 @@ body {
 }
 .header {
   position: relative;
-  padding: 25px;
+  padding: 20px 25px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -399,7 +396,7 @@ body {
 }
 @media only screen and (min-width: 1200px) {
   .header {
-    padding: 25px 55px;
+    padding: 20px 55px;
   }
 }
 .header .logo {
@@ -417,7 +414,7 @@ body {
 }
 @media only screen and (max-width: 576px) {
   .header .logo {
-    font-size: 3.5rem;
+    font-size: 3.6rem;
   }
 }
 .header .icons {
@@ -615,11 +612,11 @@ body {
 .sidebar {
   position: absolute;
   background-color: hsl(220, 17%, 7%);
-  top: 113px;
+  top: 103px;
   bottom: 0;
   left: -340px;
   max-width: 340px;
-  width: 70%;
+  width: 100%;
   border-block-start: 1px solid hsl(250, 6%, 20%);
   overflow-y: overlay;
   z-index: 4;
@@ -634,9 +631,10 @@ body {
     height: calc(100vh - 104px);
   }
 }
-@media only screen and (max-width: 576px) {
+@media screen and (max-width: 576px) {
   .sidebar {
-    top: 103px;
+    width: 60%;
+    top: 94px;
   }
 }
 .sidebar.active {
@@ -675,10 +673,7 @@ body {
   transition: 250ms ease;
 }
 .sidebar-link:is(:hover, :focus-visible) {
-  color: hsl(214, 84%, 56%);
-}
-.sidebar-link.active-link {
-  color: hsl(214, 84%, 56%) !important;
+  color: hsl(220, 100%, 95%);
 }
 .sidebar-list {
   display: grid;
@@ -808,6 +803,16 @@ body {
 @media only screen and (min-width: 576px) {
   .movie-detail .movie-poster {
     max-width: 300px;
+    width: 100%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .movie-detail .movie-poster {
+    max-width: 450px;
+  }
+}
+@media screen and (max-width: 576px) {
+  .movie-detail .movie-poster {
     width: 100%;
   }
 }

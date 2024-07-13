@@ -27,8 +27,11 @@
     <!-- Custom css file -->
     <link rel="stylesheet" href="../src/StyleSheet/main.css" />
     <!-- Custom js files -->
-    <script src="../src/JavaScript/storage.js" defer></script>
-    <script src="../src/JavaScript/favorites.js" type="module"></script>
+    <script src="../src/JavaScript/components/storage.js" defer></script>
+    <script
+      src="../src/JavaScript/components/favorites.js"
+      type="module"
+    ></script>
   </head>
 
   <body>
@@ -47,11 +50,12 @@
     </div>
     <!-- Header -->
     <header class="header">
+      <!-- Logo -->
       <a href="/index.html" class="logo">
         <span class="logo-span">Cine</span>
         <span class="logo-span text-primary">Flix</span>
       </a>
-
+      <!-- Search Form -->
       <div class="search" search-box>
         <div class="search-wrapper" search-wrapper>
           <input
@@ -75,7 +79,7 @@
           <img src="../src/Images/close.png" alt="" width="24" height="24" />
         </button>
       </div>
-
+      <!-- Nav Icons -->
       <div class="icons">
         <a href="./favorites.html" class="icon-btn">
           <img src="../src/Images/love-fill.png" alt="favorite" />

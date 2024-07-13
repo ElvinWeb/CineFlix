@@ -1,8 +1,8 @@
-import intro from "./intro.js";
-import sidebar from "./sidebar.js";
-import search from "./search.js";
-import createMovieCard from "./movieCard.js";
-import { ApiUrls, fetchData } from "./helpers.js";
+import intro from "./Intro.js";
+import sidebar from "./Sidebar.js";
+import search from "./Search.js";
+import createMovieCard from "./MovieCard.js";
+import { ApiUrls, fetchData } from "../helpers.js";
 intro();
 search();
 sidebar();

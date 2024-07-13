@@ -3,11 +3,11 @@ import {
   fetchData,
   appendToMovieList,
   ApiUrls,
-} from "./helpers.js";
-import { IMAGE_BASE_URL } from "./config.js";
-import search from "./search.js";
-import sidebar from "./sidebar.js";
-import intro from "./intro.js";
+} from "../helpers.js";
+import { IMAGE_BASE_URL } from "../config.js";
+import search from "./Search.js";
+import sidebar from "./Sidebar.js";
+import intro from "./Intro.js";
 
 intro();
 sidebar();

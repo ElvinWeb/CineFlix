@@ -1,4 +1,4 @@
-import createMovieCard from "./movieCard.js";
+import createMovieCard from "./components/MovieCard.js";
 import {
   API_KEY,
   API_URL,

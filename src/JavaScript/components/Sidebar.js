@@ -1,5 +1,5 @@
 "use strict";
-import { ApiUrls, addEventOnElements, fetchData } from "./helpers.js";
+import { ApiUrls, addEventOnElements, fetchData } from "../helpers.js";
 
 function sidebar() {
   const genreList = {};
